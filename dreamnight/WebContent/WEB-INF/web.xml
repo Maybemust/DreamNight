@@ -13,11 +13,73 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-            <servlet-name>StudentListServlet</servlet-name>
-            <servlet-class>servlet.StudentListServlet</servlet-class>
+            <servlet-name>DisplayMyThreads</servlet-name>
+            <servlet-class>servlet.DisplayMyThreads</servlet-class>
+   </servlet>
+   <servlet>
+            <servlet-name>DisplayMyCommits</servlet-name>
+            <servlet-class>servlet.DisplayMyCommits</servlet-class>
+   </servlet>
+   <servlet>
+            <servlet-name>DeleteCommit</servlet-name>
+            <servlet-class>servlet.DeleteCommit</servlet-class>
    </servlet>
    <servlet-mapping>
-        <servlet-name>StudentListServlet</servlet-name>
-        <url-pattern>/stuList</url-pattern>
+        <servlet-name>DeleteCommit</servlet-name>
+        <url-pattern>/deleteCommit</url-pattern>
    </servlet-mapping>
+   <servlet-mapping>
+        <servlet-name>DisplayMyThreads</servlet-name>
+        <url-pattern>/displayThread</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+        <servlet-name>DisplayMyCommits</servlet-name>
+        <url-pattern>/displayCommit</url-pattern>
+   </servlet-mapping>
+
+ <servlet>
+            <servlet-name>information_save_nikename</servlet-name>
+            <servlet-class>servlet.information_save_nikename</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>information_save_nikename</servlet-name>
+        <url-pattern>/changeNikename</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+            <servlet-name>information_save_qm</servlet-name>
+            <servlet-class>servlet.information_save_qm</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>information_save_qm</servlet-name>
+        <url-pattern>/changePersonality</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+            <servlet-name>PersonalPage_Init</servlet-name>
+            <servlet-class>servlet.PersonalPage_Init</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PersonalPage_Init</servlet-name>
+        <url-pattern>/getUser</url-pattern>
+    </servlet-mapping>
+      
+    <servlet>
+            <servlet-name>PdChange</servlet-name>
+            <servlet-class>servlet.PdChange</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PdChange</servlet-name>
+        <url-pattern>/PdChange</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+            <servlet-name>securityChange</servlet-name>
+            <servlet-class>servlet.securityChange</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>securityChange</servlet-name>
+        <url-pattern>/securityChange</url-pattern>
+    </servlet-mapping>
+    
 </web-app>

@@ -243,4 +243,46 @@ public class ToThread {
 		}
 		return Threads;
 	}
+	
+	
+	public List<Thread> list(int start, int count, String fromaccount) {
+		List<Thread> Threads = new ArrayList<Thread>();
+
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			String sql = "select * from Thread where fromaccount= ? order by lastcommittime desc limit ?,? ";
+
+			PreparedStatement ps = c.prepareStatement(sql);
+			ps.setString(1, fromaccount);
+			ps.setInt(2, start);
+			ps.setInt(3, count);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Thread thread = new Thread();
+				String text=rs.getString("text");
+				int threadID =rs.getInt("threadID");
+				Timestamp posttime=rs.getTimestamp("posttime");
+				
+				thread.setThreadName(rs.getString("threadname"));
+				thread.setNumCommit(rs.getInt("numcommit"));
+				thread.setNumReading(rs.getInt("numreading"));
+				thread.setLastTime(rs.getTimestamp("lastcommittime"));
+				thread.setTopLabel(rs.getInt("toplabel"));
+				thread.setFromAccount(fromaccount);
+				thread.setPostTime(posttime);
+				thread.setThreadID(threadID);
+				thread.setText(text);
+				
+				Threads.add(thread);
+			}
+			DBhelper.closeConnection(c, ps, rs);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return Threads;
+	}
 }

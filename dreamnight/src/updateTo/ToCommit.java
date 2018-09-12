@@ -192,4 +192,41 @@ public class ToCommit {
 		}
 		return Commits;
 	}
+	
+	public List<Commit> list(int start, int count,String fromaccount) {
+		List<Commit> Commits = new ArrayList<Commit>();
+
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			String sql = "select * from Commit where fromaccount=? order by commitID desc limit ?,? ";
+
+			PreparedStatement ps = c.prepareStatement(sql);
+			ps.setString(1, fromaccount);
+			ps.setInt(2, start);
+			ps.setInt(3, count);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Commit commit = new Commit();
+				String text=rs.getString("text");
+				int commitID=rs.getInt("commitID");
+				int threadID =rs.getInt("threadID");
+				Timestamp posttime=rs.getTimestamp("posttime");
+				
+				commit.setCommitID(commitID);
+				commit.setFromAccount(fromaccount);
+				commit.setPostTime(posttime);
+				commit.setThreadID(threadID);
+				commit.setText(text);
+				Commits.add(commit);
+			}
+			DBhelper.closeConnection(c, ps, rs);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return Commits;
+	}
 }

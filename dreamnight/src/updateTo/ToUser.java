@@ -113,7 +113,7 @@ public class ToUser {
 
 			Statement s = c.createStatement();
 
-			String sql = "delete from User where userID = " + account;
+			String sql = "delete from User where account = "+"'" + account+"'";
 
 			s.execute(sql);
 
@@ -125,19 +125,19 @@ public class ToUser {
 	}
 
 	public User get(String account) {
-		User User = null;
+		User user = null;
 		try {
 
 			Connection c = DBhelper.getInstance().getConnection();
 
 			Statement s = c.createStatement();
 
-			String sql = "select * from User where userID = " + account;
+			String sql = "select * from User where account = "+"'" + account+"'";
 
 			ResultSet rs = s.executeQuery(sql);
 
 			if (rs.next()) {
-				User user = new User();
+				user = new User();
 				
 				String password=rs.getString("password");
 				String nikename=rs.getString("nikename");
@@ -164,7 +164,7 @@ public class ToUser {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return User;
+		return user;
 	}
 
 	public List<User> list() {
@@ -215,4 +215,71 @@ public class ToUser {
 		}
 		return Users;
 	}
+	
+	public String getPassword(String account) {
+		String password="";
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "select * from User where account = "+"'" + account+"'";
+
+			ResultSet rs = s.executeQuery(sql);
+
+			password=rs.getString("password");
+
+			DBhelper.closeConnection(c, s, rs);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return password;
+	}
+	
+	/*
+	 * µσσήκ»
+	 * 
+	 */
+	public void update_nikename(String account,String nikename){
+    	try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			String sql = "update User set nikename= ? where account = ?";
+			
+			PreparedStatement ps = c.prepareStatement(sql);
+			ps.setString(2, account);
+			ps.setString(1, nikename);
+			
+			ps.execute();
+			
+			DBhelper.closeConnection(c, ps, null);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    }
+	
+	public void update_qm(String account, String qm){
+    	try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			String sql = "update User set personality= ? where account = ?";
+			
+			PreparedStatement ps = c.prepareStatement(sql);
+			ps.setString(2, account);
+			ps.setString(1, qm);
+			
+			ps.execute();
+			
+			DBhelper.closeConnection(c, ps, null);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    }
+
 }
