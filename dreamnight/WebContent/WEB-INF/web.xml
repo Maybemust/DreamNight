@@ -82,4 +82,46 @@
         <url-pattern>/securityChange</url-pattern>
     </servlet-mapping>
     
+
+    <servlet>
+            <servlet-name>ListServlet</servlet-name>
+            <servlet-class>servlet.ListServlet</servlet-class>
+   </servlet>
+   <servlet-mapping>
+        <servlet-name>ListServlet</servlet-name>
+        <url-pattern>/admin</url-pattern>
+   </servlet-mapping>
+   <servlet>
+   	<servlet-name>SetTop</servlet-name>
+   	<servlet-class>servlet.SetTop</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   	<servlet-name>SetTop</servlet-name>
+   	<url-pattern>/setTop</url-pattern>
+   </servlet-mapping>
+   <servlet>
+   	<servlet-name>DeleteThread</servlet-name>
+   	<servlet-class>servlet.DeleteThread</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   	<servlet-name>DeleteThread</servlet-name>
+   	<url-pattern>/deleteThread</url-pattern>
+   </servlet-mapping>
+  <servlet>
+   	<servlet-name>SetAuthority</servlet-name>
+   	<servlet-class>servlet.SetAuthority</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   	<servlet-name>SetAuthority</servlet-name>
+   	<url-pattern>/setAuthority</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+   	<servlet-name>addUserServlet</servlet-name>
+   	<servlet-class>servlet.addUserServlet</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   	<servlet-name>addUserServlet</servlet-name>
+   	<url-pattern>/addUserServlet</url-pattern>
+   </servlet-mapping>
 </web-app>
