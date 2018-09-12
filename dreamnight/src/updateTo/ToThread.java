@@ -20,7 +20,7 @@ public class ToThread {
 
 			Statement s = c.createStatement();
 
-			String sql = "select count(*) from Thread";
+			String sql = "select count(*) from thread";
 
 			ResultSet rs = s.executeQuery(sql);
 			while (rs.next()) {
@@ -129,7 +129,7 @@ public class ToThread {
 
 			ResultSet rs = s.executeQuery(sql);
 
-			if (rs.next()) {
+			 {
 				thread = new Thread();
 				String fromaccount=rs.getString("fromaccount");
 				String text=rs.getString("text");
@@ -210,7 +210,7 @@ public class ToThread {
 
 			Connection c = DBhelper.getInstance().getConnection();
 
-			String sql = "select * from Thread order by lastcommittime desc limit ?,? ";
+			String sql = "select * from thread order by lastcommittime desc limit ?,? ";
 
 			PreparedStatement ps = c.prepareStatement(sql);
 			ps.setInt(1, start);
@@ -243,7 +243,6 @@ public class ToThread {
 		}
 		return Threads;
 	}
-	
 	
 	public List<Thread> list(int start, int count, String fromaccount) {
 		List<Thread> Threads = new ArrayList<Thread>();
@@ -284,5 +283,49 @@ public class ToThread {
 			e.printStackTrace();
 		}
 		return Threads;
+	}
+	
+	public List<Thread> searchThread(String threadName) {
+		Thread thread = null;
+
+		List<Thread> threads=new ArrayList<Thread>();
+		
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "select * from Thread where threadname like '%" + threadName+"%'";// OR threadname like '" + threadName+"%' OR threadname like '%" + threadName+"'";
+				
+			ResultSet rs = s.executeQuery(sql);
+			
+			while(rs.next()) {
+				thread = new Thread();
+				String fromaccount=rs.getString("fromaccount");
+				String text=rs.getString("text");
+				int threadID =rs.getInt("threadID");
+				Timestamp posttime=rs.getTimestamp("posttime");
+				
+				thread.setThreadName(rs.getString("threadname"));
+				thread.setNumCommit(rs.getInt("numcommit"));
+				thread.setNumReading(rs.getInt("numreading"));
+				thread.setLastTime(rs.getTimestamp("lastcommittime"));
+				thread.setTopLabel(rs.getInt("toplabel"));
+				thread.setFromAccount(fromaccount);
+				thread.setPostTime(posttime);
+				thread.setThreadID(threadID);
+				thread.setText(text);
+				
+				threads.add(thread);
+				
+			}
+
+			DBhelper.closeConnection(c, s, rs);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return threads;
 	}
 }

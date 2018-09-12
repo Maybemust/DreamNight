@@ -59,7 +59,7 @@ public class addUserServlet extends HttpServlet {
 			answer0=request.getParameter("answer");
 			
 			
-			System.out.println(security0);
+			System.out.println("==============>"+security0);
 		}catch(NumberFormatException e){
 			
 		}

@@ -50,7 +50,7 @@ public class ToUser {
 
 			Connection c = DBhelper.getInstance().getConnection();
 
-			String sql = "insert into User values(?,?,?,?,?,?,?,?)";
+			String sql = "insert into User(account,password,nikename,security,answer,authority) values(?,?,?,?,?,?)";
 			PreparedStatement ps = c.prepareStatement(sql);
 			
 			ps.setString(1, user.getAccount());
@@ -58,9 +58,9 @@ public class ToUser {
 			ps.setString(3, user.getNikeName());
 			ps.setString(4, user.getSecurity());
 			ps.setString(5, user.getAnswer());
-			ps.setInt(6, user.getAuthority());
-			ps.setBlob(7,user.getHead());
-			ps.setString(8, user.getPersonality());
+			ps.setInt(6, 1);
+			//ps.setBlob(7,user.getHead());
+			//ps.setString(8, user.getPersonality());
 			
 			ps.execute();
 

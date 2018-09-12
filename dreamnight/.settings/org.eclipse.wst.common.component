@@ -2,6 +2,7 @@
     <wb-module deploy-name="dreamnight">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/" source-path="/WebContent/WEB-INF/lib"/>
         <property name="context-root" value="dreamnight"/>
         <property name="java-output-path" value="/dreamnight/build/classes"/>
     </wb-module>

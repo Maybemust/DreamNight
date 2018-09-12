@@ -20,6 +20,16 @@ public class Commit {
 	{
 		
 	}
+	
+	public Commit(String fromAccount, Timestamp postTime, String text, int threadID) {
+		super();
+		this.fromAccount = fromAccount;
+		this.postTime = postTime;
+		this.text = text;
+		this.threadID = threadID;
+	}
+
+	
 	/**
 	 * @param fromAccount
 	 * @param postTime
@@ -97,7 +107,11 @@ public class Commit {
 	}
 	
 	
-	
+	public String toString() {
+		return "Commit [fromAccount=" + fromAccount + ", postTime=" + postTime + ", text=" + text + ", commitID="
+				+ commitID + ", threadID=" + threadID + "]";
+	}
+
 	
 
 }

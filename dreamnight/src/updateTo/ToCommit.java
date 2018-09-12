@@ -44,6 +44,32 @@ public class ToCommit {
 		}
 		return total;
 	}
+	
+	public int getTotal(int s1) {
+		int total = 0;
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "select count(*) from Commit where threadID='"+String.valueOf(s1)+"';";
+
+			ResultSet rs = s.executeQuery(sql);
+			while (rs.next()) {
+				total = rs.getInt(1);
+			}
+
+			System.out.println("total:" + total);
+
+			DBhelper.closeConnection(c, s, rs);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return total;
+	}
+
 
 	public void add(Commit commit) {
 
@@ -51,13 +77,13 @@ public class ToCommit {
 
 			Connection c = DBhelper.getInstance().getConnection();
 
-			String sql = "insert into Commit values(?,?,?,?,?)";
+			String sql = "insert into Commit( fromaccount,posttime,text,threadID) values(?,?,?,?)";
 			PreparedStatement ps = c.prepareStatement(sql);
 			ps.setString(1, commit.getFromAccount());
 			ps.setTimestamp(2, commit.getPostTime());
 			ps.setString(3, commit.getText());
-			ps.setInt(4, commit.getCommitID());
-			ps.setInt(5, commit.getThreadID());
+			
+			ps.setInt(4, commit.getThreadID());
 			
 			ps.execute();
 
@@ -73,6 +99,7 @@ public class ToCommit {
 			e.printStackTrace();
 		}
 	}
+
 
 	public void update(Commit commit) {
 		try {
@@ -229,4 +256,43 @@ public class ToCommit {
 		}
 		return Commits;
 	}
+	
+	
+	public List<Commit> list(int start, int count, int s1) {
+		List<Commit> Commits = new ArrayList<Commit>();
+
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			String sql = "select * from Commit where threadID='"+String.valueOf(s1)+"' order by commitID desc limit ?,? ";
+
+			PreparedStatement ps = c.prepareStatement(sql);
+			ps.setInt(1, start);
+			ps.setInt(2, count);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Commit commit = new Commit();
+				String fromaccount=rs.getString("fromaccount");
+				String text=rs.getString("text");
+				int commitID=rs.getInt("commitID");
+				int threadID =rs.getInt("threadID");
+				Timestamp posttime=rs.getTimestamp("posttime");
+				
+				commit.setCommitID(commitID);
+				commit.setFromAccount(fromaccount);
+				commit.setPostTime(posttime);
+				commit.setThreadID(threadID);
+				commit.setText(text);
+				Commits.add(commit);
+			}
+			DBhelper.closeConnection(c, ps, rs);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return Commits;
+	}
+
 }

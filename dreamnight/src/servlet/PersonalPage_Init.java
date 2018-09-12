@@ -13,6 +13,9 @@ import updateTo.ToUser;
 public class PersonalPage_Init  extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		User USER=(User)request.getSession().getAttribute("USER");
+		
 		String account="";
 
 		try{		
@@ -20,7 +23,7 @@ public class PersonalPage_Init  extends HttpServlet{
 		}catch(NumberFormatException e){
 			
 		}
-
+		account=USER.getAccount();
 		ToUser touser = new ToUser();
 		User user = touser.get(account);
 		request.setAttribute("user", user);

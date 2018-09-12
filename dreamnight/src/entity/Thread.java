@@ -55,6 +55,15 @@ public class Thread {
 	public String getThreadName() {
 		return threadName;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Thread [threadName=" + threadName + ", fromAccount=" + fromAccount + ", numCommit=" + numCommit
+				+ ", numReading=" + numReading + ", postTime=" + postTime + ", lastTime=" + lastTime + ", threadID="
+				+ threadID + ", topLabel=" + topLabel + ", text=" + text + "]";
+	}
 	/**
 	 * @param threadName the threadName to set
 	 */

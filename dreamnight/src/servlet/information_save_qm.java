@@ -13,6 +13,9 @@ import updateTo.ToUser;
 public class information_save_qm  extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		User USER=(User)request.getSession().getAttribute("USER");
+		
 		String qm="";
 		String account="";
 
@@ -22,7 +25,7 @@ public class information_save_qm  extends HttpServlet{
 		}catch(NumberFormatException e){
 			
 		}
-
+		account=USER.getAccount();
 		ToUser touser = new ToUser();
 		touser.update_qm(account,qm);
 		request.getRequestDispatcher("getUser?account="+account).forward(request, response);

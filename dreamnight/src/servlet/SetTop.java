@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entity.User;
 import updateTo.ToThread;
 
 public class SetTop extends HttpServlet{
@@ -16,6 +17,8 @@ public class SetTop extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
+		
+		User USER=(User)request.getSession().getAttribute("USER");
 
 		String id = request.getParameter("id");
 		String key = request.getParameter("key");

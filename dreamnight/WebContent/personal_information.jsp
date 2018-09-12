@@ -352,7 +352,7 @@ function savetip()
 </form>
 <div class = "gohome" id = "gohome">
 	<br/>
-	<button id = "back" type="button" onclick="location.href = 'https://www.baidu.com'">返回主页</button>
+	<button id = "back" type="button" onclick="location.href = 'firstPage'">返回主页</button>
 </div>
 </div>
 

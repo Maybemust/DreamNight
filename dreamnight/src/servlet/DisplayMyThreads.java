@@ -17,6 +17,7 @@ public class DisplayMyThreads extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
 
+		User USER=(User)request.getSession().getAttribute("USER");
 		
 		int start = 0;
 		int count = 5;
@@ -28,7 +29,7 @@ public class DisplayMyThreads extends HttpServlet {
 		} catch (NumberFormatException e) {
 		
 		}
-
+		fromaccount=USER.getAccount();
 		int next = start + count;
 		int pre = start - count;
 

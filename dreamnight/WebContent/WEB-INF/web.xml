@@ -124,4 +124,87 @@
    	<servlet-name>addUserServlet</servlet-name>
    	<url-pattern>/addUserServlet</url-pattern>
    </servlet-mapping>
+
+
+<servlet>
+    <servlet-name>ToConfirmPassword</servlet-name>
+    <servlet-class>servlet.ToConfirmPassword</servlet-class>
+  </servlet>
+
+<servlet-mapping>
+    <servlet-name>ToConfirmPassword</servlet-name>
+    <url-pattern>/ToConfirmPassword</url-pattern>
+  </servlet-mapping>
+
+<servlet>
+    <servlet-name>toForgetPassword</servlet-name>
+    <servlet-class>servlet.toForgetPassword</servlet-class>
+  </servlet>
+
+<servlet-mapping>
+    <servlet-name>toForgetPassword</servlet-name>
+    <url-pattern>/toForgetPassword</url-pattern>
+  </servlet-mapping>
+
+<servlet>
+    <servlet-name>ToResetPassword</servlet-name>
+    <servlet-class>servlet.ToResetPassword</servlet-class>
+  </servlet>
+
+  
+  <servlet-mapping>
+    <servlet-name>ToResetPassword</servlet-name>
+    <url-pattern>/ToResetPassword</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>logindata</servlet-name>
+    <servlet-class>servlet.logindata</servlet-class>
+  </servlet>
+
+  
+  <servlet-mapping>
+    <servlet-name>logindata</servlet-name>
+    <url-pattern>/logindata</url-pattern>
+  </servlet-mapping>
+
+
+<servlet>
+            <servlet-name>SearchThreadServlet</servlet-name>
+            <servlet-class>servlet.SearchThreadServlet</servlet-class>
+   </servlet>
+   <servlet-mapping>
+        <servlet-name>SearchThreadServlet</servlet-name>
+        <url-pattern>/searchThread</url-pattern>
+   </servlet-mapping>
+
+   <servlet>
+            <servlet-name>ThreadDetailServlet</servlet-name>
+            <servlet-class>servlet.ThreadDetailServlet</servlet-class>
+   </servlet>
+   <servlet-mapping>
+        <servlet-name>ThreadDetailServlet</servlet-name>
+        <url-pattern>/threadDetails</url-pattern>
+   </servlet-mapping>
+
+
+ <servlet>
+            <servlet-name>FirstPageServlet</servlet-name>
+            <servlet-class>servlet.FirstPageServlet</servlet-class>
+   </servlet>
+   <servlet-mapping>
+        <servlet-name>FirstPageServlet</servlet-name>
+        <url-pattern>/firstPage</url-pattern>
+   </servlet-mapping>
+
+
+ <servlet>
+            <servlet-name>AddCommitServlet</servlet-name>
+            <servlet-class>servlet.AddCommitServlet</servlet-class>
+   </servlet>
+   <servlet-mapping>
+        <servlet-name>AddCommitServlet</servlet-name>
+        <url-pattern>/addCommit</url-pattern>
+   </servlet-mapping>
+
 </web-app>

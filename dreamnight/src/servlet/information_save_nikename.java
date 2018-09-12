@@ -13,6 +13,9 @@ import updateTo.ToUser;
 public class information_save_nikename  extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		User USER=(User)request.getSession().getAttribute("USER");
+		
 		String nickname="";
 		String account="";
 		try{
@@ -21,7 +24,7 @@ public class information_save_nikename  extends HttpServlet{
 		}catch(NumberFormatException e){
 			
 		}
-	
+		account=USER.getAccount();
 		ToUser touser = new ToUser();
 		touser.update_nikename(account,nickname);
 		System.out.println(account);
