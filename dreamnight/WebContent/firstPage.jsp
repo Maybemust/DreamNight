@@ -72,7 +72,7 @@ $("table").width(width) ; //设置table宽度
 	<script>
 	function getValueAndSkip(){
 		        var input=document.getElementById("searchTextValue").value;//通过id获取文本框对象
-				var urlb="searchThread?threadName="+input.toString();
+				var urlb="searchThread?threadName="+encodeURI(encodeURI(input.toString()))+"&start=0";
 				//window.location.href=urlb;
 				window.open(urlb,"_blank");
 		     }
@@ -92,13 +92,13 @@ $("table").width(width) ; //设置table宽度
 	align='center' border='1' cellspacing='0' >
 	<tr>
 	</tr>
-		<c:forEach items="${threads}" var="thread" varStatus="st">
+		<c:forEach items="${threadsZD}" var="thread" varStatus="st">
 		<tr>
 		<td>      
 		<div class="well" ><strong> 
 		<img src = "./images/person2.JPG" alt="user_pic" style= "float: left; height:40px; width:60px;padding-left: 20px">
 		  <p style= "float:left;padding-left: 20px;padding-top:10px">:</p>
-		  <a href="threadDetails?threadID=${thread.getThreadID()}" style = "float:left;padding-left: 5px;padding-top:1px;font-size:17px">
+		  <a href="threadDetails?threadID=${thread.getThreadID()}&start=0&ifclick=1" style = "float:left;padding-left: 5px;padding-top:1px;font-size:17px">
 		  ${thread.getThreadName()}</a></strong>
 		  <br>
 		  <br>
@@ -121,22 +121,50 @@ $("table").width(width) ; //设置table宽度
 		  </td>
 		</tr>
 
-<script>
-			passIdAndSkip(id1){
-				alert(111);
-				var urlc = "threadDetails";
-				window.open(urlc,"_blank");
-			}
-</script>
+
 <div>
 </div>
 </c:forEach>
+
+		<c:forEach items="${threads}" var="thread" varStatus="st">
+		<tr>
+		<td>      
+		<div class="well" ><strong> 
+		<img src = "./images/person2.JPG" alt="user_pic" style= "float: left; height:40px; width:60px;padding-left: 20px">
+		  <p style= "float:left;padding-left: 20px;padding-top:10px">:</p>
+		  <a href="threadDetails?threadID=${thread.getThreadID()}&start=0&ifclick=1" style = "float:left;padding-left: 5px;padding-top:1px;font-size:17px">
+		  ${thread.getThreadName()}</a></strong>
+		  <br>
+		  <br>
+		 	<div>
+
+</div>
+		 <div class="text-center col-md-1" >
+		 <a style= "float:center;">${thread.getFromAccount()}</a>
+		 </div>
+		  
+		  <hr class="hr1">
+		  <a style = "float:center;padding-left:5px;font-size: 20px;color:#3A3A3A">${thread.getText()}</a>
+		  <ul class="nav navbar-nav navbar-right">
+        		<li><a href="#" style="font-weight:bold;">点击数目：${thread.getNumReading()}</a></li>
+				<li><a href="#">评论数目：${thread.getNumCommit()}</a></li>
+      		</ul>
+		  <br>
+		  </div>
+		  </td>
+		</tr>
+
+
+<div>
+</div>
+</c:forEach>
+
 </table>	
     </div>
 	<div class="col-md-3 " >
 		<div class="panel panel-default">
   <div class="panel-heading">
-	  <a href = "displayThread"><img src="./images/person.JPG"  style="padding-left: 35px;padding-top:5px" height="250px"></a>
+	  <img src="./images/person.JPG" style="padding-left: 35px;padding-top:5px" height="250px">
 	  <br>
     <h3 class="panel-title" align="center">User_Name</h3>
   </div>
@@ -161,11 +189,10 @@ $("table").width(width) ; //设置table宽度
     <div class="text-center col-md-6 col-md-offset-3">
       <ul class="pagination">
     <li><a href="#">&laquo;</a></li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
+		<li><a href="firstPage?start=0">首 页</a></li>
+		<li><a href="firstPage?start=${pre}">上一页</a></li>
+		<li><a href="firstPage?start=${next}">下一页</a></li>
+		<li><a href="firstPage?start=${last}">末 页</a></li>
     <li><a href="#">&raquo;</a></li>
 </ul>
     </div>

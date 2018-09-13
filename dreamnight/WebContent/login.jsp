@@ -8,28 +8,45 @@
 </head>
 <head>
 	<style>
-		.blocks{  
+		#all{
+			width:auto;
+			height:auto;
+		}
+		#blocks{  
 			width:300px;
 			height: 300px;
 			background-color: aliceblue;
-            margin:500px;
-			margin-top: 20px;
-			margin-bottom: auto;
+
+			margin-top:140px;
+			position: absolute;
+			left:40%;
+			
 			padding-top: 10px;
 			padding-bottom: 50px;
 			padding-left: 30px;
 			padding-right: 30px;
             border-radius:8px;
 		}
+		@media screen and (max-width: 600px){
+			#blocks{  
+				left:20%;
+			}
+		}
+		@media screen and (max-width: 400px){
+			#blocks{  
+				left:10%;
+			}
+		}
 		</style>
 	</head>
-	<body style="background-color:#36465D;" background="./images/stars.jpg">
+<body style="background-color:#36465D;" background="./images/stars.jpg">
+<div id="all">
 	<br>
 	<br>
 	<br>
 	<br>
 	<p>
-	<div class="blocks" style="opacity: 0.77">
+	<div class="blocks" id="blocks" style="opacity: 0.77">
 	<h2>密码登录</h2>
 		<p>
 			<form action="logindata" id="form1" method="post">
@@ -51,6 +68,7 @@
 		<br>
 		<a href="./register.jsp">点击这里注册!</a>
 			</div>
+</div>
 </body>
 </html>
 

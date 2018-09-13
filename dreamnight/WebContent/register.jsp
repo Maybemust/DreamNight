@@ -8,6 +8,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> 
+<meta name="apple-mobile-web-app-capable" content="yes"> 
+<meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+<meta name="format-detection" content="telephone=no"> 
 <title>注册</title>
 <style>
 	.mydivcolor{
@@ -16,16 +20,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		padding-left: 40px;
 		padding-top: 20px;
 		position: absolute;
-		left: 44%;
-		top: 20%;
-		height: 600px;
-		width: 300px;
+		left: 38%;
+		top: 10%;
+		height: 86%;
+		width: 23%;
 	}
 	.myinputtext{
 		border-radius: 3px;
 		border: none;
 		height: 25px;
-		width: 250px;
+		width: 300px;
 	}
 	.myh{
 		line-height: 1px;
@@ -67,10 +71,75 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		top: 10px;
 	}
 	body{
-		background-image: url(./images/stars.jpg);
+		background-image: url(images/stars.jpg);
 		background-attachment: fixed;
 		background-repeat: no-repeat;
 		background-size: cover;
+	}
+	
+	 @media screen and (min-width: 320px) and (max-width: 480px){
+		.mydivcolor{
+		background-color: rgba(255,255,255,0.74);
+		border-radius: 8px;
+		padding-left: 32px;
+		padding-top: 5px;
+		position: absolute;
+		left: 6%;
+		top: 5%;
+		height: 490px;
+		width: 280px;
+	}
+	.myinputtext{
+		border-radius: 3px;
+		border: none;
+		height: 25px;
+		width: 250px;
+	}
+	.myh{
+		line-height: 1px;
+	}
+	.myp1{
+		color:#555555;
+		line-height: 1px;
+		font-size: 13px;
+		font-weight: bold;
+	}
+	.myp2{
+		color:#232323;
+		line-height: 1px;
+		font-size: 17px;
+		font-weight: bold;
+	}
+	.mylabel{
+		color: #1D1D1D;
+		font-size: 10px;
+		font-weight: bold;
+		position:relative;
+		top:-2.5px;
+	}
+	.myhr{
+		position:relative;
+		left: 0%;
+		width: 260.5px;
+	}
+	.mysubmit{
+		background-color:#2E0571;
+		color:#FFFFFF;
+		border-radius: 6px;
+		height: 40px;
+		width: 250px;
+		border: none;
+		font-size: 18px;
+		font-weight: bold;
+		position:relative;
+		top: 10px;
+	}
+	body{
+		background-image: url(images/stars.jpg);
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
 	}
 </style>
 </head>
@@ -151,7 +220,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<br>
 	<br>
 	<hr class="myhr">
-	<a href=" "><input id="alink" class="mysubmit" type="submit" name="next" value="注册" onclick="addCheck1()" onmouseover="this.style.backgroundColor='#5609D4';" onmouseout="this.style.backgroundColor='#2E0571';"></a>
+	<a href="./login.jsp"><input id="alink" class="mysubmit" type="submit" name="next" value="注册" onclick="addCheck1()" onmouseover="this.style.backgroundColor='#5609D4';" onmouseout="this.style.backgroundColor='#2E0571';"></a>
 	
 </form>
 </div>

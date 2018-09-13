@@ -5,6 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <head>
 
 <meta charset="utf-8">
@@ -52,11 +53,12 @@ $("table").width(width) ; //设置table宽度
       </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" style="background-color:#273346;width:300px;" class="form-control" placeholder="Search">
+          <input type="text" style="background-color:#273346;width:300px;" id ="searchTextValue"  class="form-control">
         </div>
-        <button type="submit" class="btn btn-default" ><a href= "./搜索结果.html" style = "font-size:18px">搜 索</a></button>
-      </form>
+        <button type="submit" class="btn btn-default" onclick="getValueAndSkip()" style = "font-size:18px" >搜 索</button>
+            </form>
       <ul class="nav navbar-nav navbar-right">
+        <li><a href="firstPage?start=0" style="font-weight:bold; color:#BCBCBC">返回首页</a></li>
         <li><a href="#" style="font-weight:bold; color:#BCBCBC">登陆</a></li>
 		<li><a href="#" style="color:#C8C8C8" >注册</a></li>
       </ul>
@@ -65,8 +67,21 @@ $("table").width(width) ; //设置table宽度
   </div>
   <!-- /.container-fluid --> 
 </nav>
+
+<%!String [] str1; %>
+	<script>
+	function getValueAndSkip(){
+		        var input=document.getElementById("searchTextValue").value;//通过id获取文本框对象
+				var urlb="searchThread?threadName="+input.toString();
+				window.open(urlb,"_blank");
+
+		     }
+	function parseNum(value){
+	    value = parseFloat(value);
+	}
+		</script>
 <div class="container-fluid">
-	<p align="center" style="color: #FFFFFF">0回复帖，共1页。</p>
+	<p align="center" style="color: #FFFFFF">${thread.numCommit}回复帖,共<fmt:formatNumber value="${Math.ceil(thread.numCommit/5)}" pattern="#"/>页</p>
   <hr>
 </div>
 <div class="container">
@@ -95,7 +110,7 @@ $("table").width(width) ; //设置table宽度
 		   <div class="text-center col-md-1" >
 		  <a style= "float:center;">${thread.fromAccount}</a>
 		 </div></strong>
-		 <a style = "float:center;padding-left:5px;font-size: 20px;color:#3A3A3A">${thread.text}</a>
+		 <p style = "float:center;font-size: 20px;color:#3A3A3A">${thread.text}</p>
 			<ul class="nav navbar-nav navbar-right">
 		  <br>
 		  <br>
@@ -125,9 +140,9 @@ $("table").width(width) ; //设置table宽度
 		 <div class="text-center col-md-1" >
 		 <a style= "float:center;">${commit.fromAccount}</a>
 		 </div><strong> 
-		  <a style = "float:center;padding-left:5px;font-size: 20px;color:#3A3A3A">${commit.text}</a>
+		  <p style = "float:center;padding-left:5px;font-size: 20px;color:#3A3A3A">${commit.text}</p>
 		  <ul class="nav navbar-nav navbar-right">
-        		<li><a href="#" style="font-weight:bold;">回复时间：${commit.postTime}</a></li>
+        		<li><a href="#" style="font-weight:bold;">回复时间：<fmt:formatDate value="${commit.postTime}" pattern="yyyy-MM-dd HH:mm:ss"/>    </a></li>
       		</ul>
 		  <br>
 		  </div>
@@ -149,56 +164,14 @@ $("table").width(width) ; //设置table宽度
 String datetime=new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()); 
 %> 
 <form action = "addCommit" method = "post">
-<input type="text" name="threadID" value="${thread.threadID}"/>
-<input type="text" name="fromAccount" value="1"/>
+<input type="hidden" name="threadID" value="${thread.threadID}"/>
+<input type="hidden" name="fromAccount" value="${USER.getAccount()}"/>
 
 <textarea name="textfield" cols="120" rows="6" id="textfield"></textarea><br><br>
 		  <button class="alert-success"  type="submit" >发表</button>
 </form>
 		  <br>
-			<script>
-			function deal2(){				
-				var tid = new RegExp("(^|&)"+ "threadID" +"=([^&]*)(&|$)");
-			  	var t = window.location.search.substr(1).match(tid);
-			  	var str=unescape(t[2]);//获得threadID
 
-				var fromAccount = 1; 
-				
-				/***********************获取当前时间********************/
-			    var date = new Date();
-			    var seperator1 = "-";
-			    var seperator2 = ":";
-			    var month = date.getMonth() + 1;
-			    var strDate = date.getDate();
-			    if (month >= 1 && month <= 9) {
-			        month = "0" + month;
-			    }
-			    if (strDate >= 0 && strDate <= 9) {
-			        strDate = "0" + strDate;
-			    }
-			    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
-			            + " " + date.getHours() + seperator2 + date.getMinutes()
-			            + seperator2 + date.getSeconds();
-			    
-				/***********************获取当前时间********************/
-				alert(currentdate.toString());
-				//var addText=document.getElementById("textfield").value;*/
-			    var text=document.getElementById("textfield").value;
-				
-				alert(text);
-				
-				var urla="addCommit?threadId="+str+"&fromAccount="
-				+fromAccount.toString()+ "&postTime="+currentdate.toString()
-				+"&fromAccount="+fromAccount.toString();
-				alert(urla);
-
-				document.getElementById("alink").href =urla;
-
-				
-			}
-			
-	
-			</script>
 		  <br>
 		  <br>
 
@@ -219,11 +192,10 @@ String datetime=new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance()
     <div class="text-center col-md-6 col-md-offset-3">
       <ul class="pagination">
     <li><a href="#">&laquo;</a></li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
+		<li><a href="threadDetails?threadID=${thread.threadID}&start=0">首 页</a></li>
+		<li><a href="threadDetails?threadID=${thread.threadID}&start=${pre}">上一页</a></li>
+		<li><a href="threadDetails?threadID=${thread.threadID}&start=${next}">下一页</a></li>
+		<li><a href="threadDetails?threadID=${thread.threadID}&start=${last}">末 页</a></li>
     <li><a href="#">&raquo;</a></li>
 </ul>
     </div>

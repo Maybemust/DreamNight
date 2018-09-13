@@ -19,7 +19,7 @@ public class DeleteThread extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
-		
+		request.setCharacterEncoding("utf-8");
 		User USER=(User)request.getSession().getAttribute("USER");
 
 		String id = request.getParameter("id");

@@ -14,6 +14,7 @@ public class toForgetPassword extends HttpServlet {
 			HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
+		request.setCharacterEncoding("utf-8");
 		String answer="";
 		String account="";
 		try {
@@ -21,7 +22,7 @@ public class toForgetPassword extends HttpServlet {
 			account=request.getParameter("account");
 			System.out.println(answer+"  "+account);
 		} catch (NumberFormatException e) {
-			// 当浏览器没有传参数username,password时
+			
 		}
 		//User user=new User("username","","","","");
 		ToUser toUser=new ToUser();

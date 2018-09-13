@@ -44,10 +44,10 @@
 							</c:if>
 						</td>
 						<td>
-						<a href = "editThread?id=${thread.threadID }&account=${account}">编辑</a>
+						<a href = "editTopic?threadID=${thread.threadID}&fromPage=admin">编辑</a>
 						</td>
 						<td>
-						<a href = "deleteThread?id=${thread.threadID }&op=删除主题帖操作">删除</a>
+						<a href = "deleteThread?id=${thread.threadID }&op=删除主题s帖操作">删除</a>
 						</td>
 					</tr>
 				</c:forEach>

@@ -20,7 +20,7 @@ public class ToThread {
 
 			Statement s = c.createStatement();
 
-			String sql = "select count(*) from thread";
+			String sql = "select count(*) from Thread";
 
 			ResultSet rs = s.executeQuery(sql);
 			while (rs.next()) {
@@ -106,7 +106,7 @@ public class ToThread {
 
 			Statement s = c.createStatement();
 
-			String sql = "delete from Thread where ThreadID = " + ThreadID;
+			String sql = "delete from Thread where ThreadID = '" + ThreadID + "'";
 
 			s.execute(sql);
 
@@ -116,7 +116,23 @@ public class ToThread {
 			e.printStackTrace();
 		}
 	}
+	public void resetNumReading(int ThreadID) {
+		try {
 
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "update Thread set numreading=numreading+1 where ThreadID =" + ThreadID+";";
+
+			s.execute(sql);
+
+			DBhelper.closeConnection(c, s, null);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	public Thread get(int id) {
 		Thread thread = null;
 		try {
@@ -129,7 +145,7 @@ public class ToThread {
 
 			ResultSet rs = s.executeQuery(sql);
 
-			 {
+			if (rs.next()) {
 				thread = new Thread();
 				String fromaccount=rs.getString("fromaccount");
 				String text=rs.getString("text");
@@ -200,7 +216,47 @@ public class ToThread {
 	}
 
 	public List<Thread> list() {
-		return list(0, Short.MAX_VALUE);
+		Thread thread = null;
+
+		List<Thread> threads=new ArrayList<Thread>();
+		
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "select * from Thread where toplabel = 1";// OR threadname like '" + threadName+"%' OR threadname like '%" + threadName+"'";
+				
+			ResultSet rs = s.executeQuery(sql);
+			
+			while(rs.next()) {
+				thread = new Thread();
+				String fromaccount=rs.getString("fromaccount");
+				String text=rs.getString("text");
+				int threadID =rs.getInt("threadID");
+				Timestamp posttime=rs.getTimestamp("posttime");
+				
+				thread.setThreadName(rs.getString("threadname"));
+				thread.setNumCommit(rs.getInt("numcommit"));
+				thread.setNumReading(rs.getInt("numreading"));
+				thread.setLastTime(rs.getTimestamp("lastcommittime"));
+				thread.setTopLabel(rs.getInt("toplabel"));
+				thread.setFromAccount(fromaccount);
+				thread.setPostTime(posttime);
+				thread.setThreadID(threadID);
+				thread.setText(text);
+				
+				threads.add(thread);
+				
+			}
+
+			DBhelper.closeConnection(c, s, rs);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return threads;
 	}
 
 	public List<Thread> list(int start, int count) {
@@ -210,7 +266,7 @@ public class ToThread {
 
 			Connection c = DBhelper.getInstance().getConnection();
 
-			String sql = "select * from thread order by lastcommittime desc limit ?,? ";
+			String sql = "select * from Thread order by lastcommittime desc limit ?,? ";
 
 			PreparedStatement ps = c.prepareStatement(sql);
 			ps.setInt(1, start);
@@ -244,6 +300,46 @@ public class ToThread {
 		return Threads;
 	}
 	
+	public List<Thread> list2(int start, int count,String threadName) {
+		List<Thread> Threads = new ArrayList<Thread>();
+
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			String sql = "select * from Thread where threadname like '%" + threadName+"%'"+"order by lastcommittime desc limit ?,? ";
+
+			PreparedStatement ps = c.prepareStatement(sql);
+			ps.setInt(1, start);
+			ps.setInt(2, count);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Thread thread = new Thread();
+				String fromaccount=rs.getString("fromaccount");
+				String text=rs.getString("text");
+				int threadID =rs.getInt("threadID");
+				Timestamp posttime=rs.getTimestamp("posttime");
+				
+				thread.setThreadName(rs.getString("threadname"));
+				thread.setNumCommit(rs.getInt("numcommit"));
+				thread.setNumReading(rs.getInt("numreading"));
+				thread.setLastTime(rs.getTimestamp("lastcommittime"));
+				thread.setTopLabel(rs.getInt("toplabel"));
+				thread.setFromAccount(fromaccount);
+				thread.setPostTime(posttime);
+				thread.setThreadID(threadID);
+				thread.setText(text);
+				
+				Threads.add(thread);
+			}
+			DBhelper.closeConnection(c, ps, rs);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return Threads;
+	}
 	public List<Thread> list(int start, int count, String fromaccount) {
 		List<Thread> Threads = new ArrayList<Thread>();
 
@@ -284,6 +380,7 @@ public class ToThread {
 		}
 		return Threads;
 	}
+	
 	
 	public List<Thread> searchThread(String threadName) {
 		Thread thread = null;
@@ -328,4 +425,5 @@ public class ToThread {
 		}
 		return threads;
 	}
+
 }

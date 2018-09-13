@@ -8,28 +8,42 @@
 </head>
 <head>
 	<style>
-		.blocks{  
+		#all{
+			width:auto;
+			height:auto;
+		}
+		#blocks{  
 			width:250px;
 			height: 200px;
 			background-color: aliceblue;
-            margin:500px;
-			margin-top: 50px;
-			margin-bottom: auto;
+            margin-top:140px;
+			position: absolute;
+			left:40%;
 			padding-top: 35px;
 			padding-bottom: 50px;
 			padding-left: 30px;
 			padding-right: 30px;
             border-radius:8px;
-			align-content: center;
+		}
+		@media screen and (max-width: 600px){
+			#blocks{  
+				left:20%;
+			}
+		}
+		@media screen and (max-width: 400px){
+			#blocks{  
+				left:10%;
+			}
 		}
 		</style>
 	</head>
-	<body style="background-color:#36465D;" background="./images/stars.jpg">
+<body style="background-color:#36465D;" background="./images/stars.jpg">
+<div id="all">
 	<br>
 	<br>
 	<h1></h1>
 	<p>
-	<div class="blocks" style="opacity: 0.77">
+	<div class="blocks" id="blocks" style="opacity: 0.77">
 	<h2 style="text-align: center">确认账号</h2>
 		<p>
 		<br>	
@@ -44,5 +58,6 @@
 				<input type="submit" value="下一页" style="align-content:center;background-color:#666666;color: aliceblue ;width: 250px; height: 30px;border-radius: 8px;font-size: 20px">
 		</form>
 			</div>
+</div>
 </body>
 </html>

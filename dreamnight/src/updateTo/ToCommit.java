@@ -20,6 +20,31 @@ import utils.DBhelper;
  *
  */
 public class ToCommit {
+	public int getTotal(int s1) {
+		int total = 0;
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "select count(*) from Commit where threadID = "+String.valueOf(s1);
+
+			ResultSet rs = s.executeQuery(sql);
+			while (rs.next()) {
+				total = rs.getInt(1);
+			}
+
+			System.out.println("total:" + total);
+
+			DBhelper.closeConnection(c, s, rs);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return total;
+	}
+
 	public int getTotal() {
 		int total = 0;
 		try {
@@ -45,30 +70,7 @@ public class ToCommit {
 		return total;
 	}
 	
-	public int getTotal(int s1) {
-		int total = 0;
-		try {
-
-			Connection c = DBhelper.getInstance().getConnection();
-
-			Statement s = c.createStatement();
-
-			String sql = "select count(*) from Commit where threadID='"+String.valueOf(s1)+"';";
-
-			ResultSet rs = s.executeQuery(sql);
-			while (rs.next()) {
-				total = rs.getInt(1);
-			}
-
-			System.out.println("total:" + total);
-
-			DBhelper.closeConnection(c, s, rs);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return total;
-	}
+	
 
 
 	public void add(Commit commit) {
@@ -142,7 +144,56 @@ public class ToCommit {
 			e.printStackTrace();
 		}
 	}
+	public int resetCommitNum(int threadID) {
+		int commitNum = 0;
+		try {
+			
+			Connection c = DBhelper.getInstance().getConnection();
 
+			Statement s = c.createStatement();
+
+			String sql = "select count(*) from commit where threadID = "+ threadID+";";
+			s.execute(sql);
+
+
+
+			
+			ResultSet rs = s.executeQuery(sql);
+			while (rs.next()) {
+				commitNum = rs.getInt(1);
+			}
+
+			String sql1 = "update Thread set numcommit="+commitNum+" where ThreadID =" + threadID+";";
+
+			s.execute(sql1);
+			
+			DBhelper.closeConnection(c, s, null);
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return commitNum;
+	}
+	
+	public void resetCommitNum(int threadID,int commitNum) {
+		try {
+			
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql1 = "update Thread set numcommit="+commitNum+" where ThreadID =" + threadID+";";
+
+			s.execute(sql1);
+			
+			DBhelper.closeConnection(c, s, null);
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	public Commit get(int id) {
 		Commit Commit = null;
 		try {
@@ -182,7 +233,47 @@ public class ToCommit {
 	public List<Commit> list() {
 		return list(0, Short.MAX_VALUE);
 	}
+	public List<Commit> list(int start, int count, int s1) {
+		List<Commit> Commits = new ArrayList<Commit>();
 
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			String sql = "select * from Commit where threadID="+s1+" order by commitID desc limit ?,? ";
+
+			PreparedStatement ps = c.prepareStatement(sql);
+			ps.setInt(1, start);
+			ps.setInt(2, count);
+
+			ResultSet rs = ps.executeQuery();
+			
+			System.out.println("+++++++++++++++++++++++++++++++++"+start);
+
+			while (rs.next()) {
+				Commit commit = new Commit();
+				String fromaccount=rs.getString("fromaccount");
+				String text=rs.getString("text");
+				int commitID=rs.getInt("commitID");
+				int threadID =rs.getInt("threadID");
+				Timestamp posttime=rs.getTimestamp("posttime");
+				
+				commit.setCommitID(commitID);
+				commit.setFromAccount(fromaccount);
+				commit.setPostTime(posttime);
+				commit.setThreadID(threadID);
+				commit.setText(text);
+				Commits.add(commit);
+				
+				System.out.println(commit.toString());
+
+			}
+			DBhelper.closeConnection(c, ps, rs);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return Commits;
+	}
 	public List<Commit> list(int start, int count) {
 		List<Commit> Commits = new ArrayList<Commit>();
 
@@ -258,41 +349,6 @@ public class ToCommit {
 	}
 	
 	
-	public List<Commit> list(int start, int count, int s1) {
-		List<Commit> Commits = new ArrayList<Commit>();
-
-		try {
-
-			Connection c = DBhelper.getInstance().getConnection();
-
-			String sql = "select * from Commit where threadID='"+String.valueOf(s1)+"' order by commitID desc limit ?,? ";
-
-			PreparedStatement ps = c.prepareStatement(sql);
-			ps.setInt(1, start);
-			ps.setInt(2, count);
-
-			ResultSet rs = ps.executeQuery();
-
-			while (rs.next()) {
-				Commit commit = new Commit();
-				String fromaccount=rs.getString("fromaccount");
-				String text=rs.getString("text");
-				int commitID=rs.getInt("commitID");
-				int threadID =rs.getInt("threadID");
-				Timestamp posttime=rs.getTimestamp("posttime");
-				
-				commit.setCommitID(commitID);
-				commit.setFromAccount(fromaccount);
-				commit.setPostTime(posttime);
-				commit.setThreadID(threadID);
-				commit.setText(text);
-				Commits.add(commit);
-			}
-			DBhelper.closeConnection(c, ps, rs);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return Commits;
-	}
+	
 
 }

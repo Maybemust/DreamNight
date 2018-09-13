@@ -208,5 +208,39 @@
    </servlet-mapping>
    
    
+<servlet>
+
+<servlet-name>SaveEditTopicServlet</servlet-name>
+
+<servlet-class>servlet.SaveEditTopicServlet</servlet-class>
+
+</servlet>
+
+
+<servlet-mapping>
+
+<servlet-name>SaveEditTopicServlet</servlet-name>
+
+<url-pattern>/saveEditTopic</url-pattern>
+
+</servlet-mapping>
+
+
+<servlet>
+
+<servlet-name>EditTopicServlet</servlet-name>
+
+<servlet-class>servlet.EditTopicServlet</servlet-class>
+
+</servlet>
+
+
+<servlet-mapping>
+
+<servlet-name>EditTopicServlet</servlet-name>
+
+<url-pattern>/editTopic</url-pattern>
+
+</servlet-mapping>
  
 </web-app>

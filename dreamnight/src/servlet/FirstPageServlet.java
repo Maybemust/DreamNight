@@ -57,6 +57,8 @@ public class FirstPageServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
+		request.setCharacterEncoding("utf-8");
+		User USER=(User)request.getSession().getAttribute("USER");
 		String threadName="";
 		String threadFromAccount="";
 		int threadNumCommit=0;//跟贴数
@@ -72,20 +74,7 @@ public class FirstPageServlet extends HttpServlet {
 		int start = 0;
 		int id=0;
 		try{		
-//			threadNumCommit=Integer.parseInt(request.getParameter("numcommit"));
-//			threadNumRead=Integer.parseInt(request.getParameter("numreading"));
-//			threadName=request.getParameter("threadname");
-//			threadFromAccount=request.getParameter("fromaccount");
-//			
-//			SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
-//	        threadPostTime = Timestamp.valueOf(request.getParameter("posttime"));	        
-//	        threadLastCommitTime = Timestamp.valueOf(request.getParameter("lastcommittime"));	        
-//			threadID=Integer.parseInt(request.getParameter("threadID"));
-//			threadTopLabel=Integer.parseInt(request.getParameter("toplabel"));
-//			threadText=request.getParameter("text");
-			
-			//threadLastCommitName=request.getParameter("lastcommittext");
-			//threadLastText=request.getParameter("lastcommitname");
+
 			start = Integer.parseInt(request.getParameter("start"));
 			
 		}catch(NumberFormatException e){
@@ -111,7 +100,6 @@ public class FirstPageServlet extends HttpServlet {
 		int pre = start - count;
 
 		int total = new ToThread().getTotal();
-		System.out.print(total);
 		
 		int last;
 		if (0 == total % count)
@@ -126,8 +114,13 @@ public class FirstPageServlet extends HttpServlet {
 		request.setAttribute("pre", pre);
 		request.setAttribute("last", last);
 
+		List<Thread> threadsZD = new ToThread().list();
+		
 		List<Thread> threads = new ToThread().list(start, count);
+
 		request.setAttribute("threads", threads);
+		
+		request.setAttribute("threadsZD", threadsZD);
 
 		request.getRequestDispatcher("firstPage.jsp").forward(request, response);
 

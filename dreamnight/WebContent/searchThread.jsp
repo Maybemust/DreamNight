@@ -8,6 +8,7 @@
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>搜索结果</title>
 
@@ -56,11 +57,12 @@ $("table").width(width) ; //设置table宽度
       </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" style="background-color:#273346;width:300px;" class="form-control" placeholder="Search">
+          <input type="text" style="background-color:#273346;width:300px;" id ="searchTextValue"  class="form-control">
         </div>
-        <button type="submit" class="btn btn-default" ><a href= "./搜索结果.html" style = "font-size:18px">搜 索</a></button>
+        <button type="submit" class="btn btn-default" onclick="getValueAndSkip()" style = "font-size:18px" >搜 索</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
+              <li><a href="firstPage?start=0" style="font-weight:bold; color:#FECD10">返回首页</a></li>
         <li><a href="#" style="font-weight:bold; color: #FECD00">登  陆</a></li>
 		<li><a href="#" style="color:#C8C8C8" >注  册</a></li>
       </ul>
@@ -69,14 +71,24 @@ $("table").width(width) ; //设置table宽度
   </div>
   <!-- /.container-fluid --> 
 </nav>
+
+<%!String [] str1; %>
+	<script>
+	function getValueAndSkip(){
+		        var input=document.getElementById("searchTextValue").value;//通过id获取文本框对象
+				var urlb="searchThread?threadName="+input.toString();
+				window.open(urlb,"_blank");
+
+		     }
+		</script>
+		
 <div class="container-fluid">
 	<h3 align="left" style="color: #F9CE08;font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'">下方是您的搜索结果:</h3>
 	<p></p>
   <hr> 
 </div>
 <div class="container">
-	 <button type="button" class="btn btn-info btn-sm" onclick="getnoApplicationData()">关键词1</button>
-      <button type="button" class="btn btn-success btn-sm">关键词2</button>
+	 <button type="button" class="btn btn-info btn-sm" onclick="getnoApplicationData()">关键词:${searchName}</button>
   <div class="row">
 		  
     <div class="text-center col-md-12" >	
@@ -125,50 +137,6 @@ $("table").width(width) ; //设置table宽度
 	</div>
   </div>
 
-	<!--
-  <div class="row text-center">
-    <div class="col-md-6 col-md-offset-3">Click outside the blue container to select this <strong>row</strong>. Columns are always contained within a row. <strong>Rows are indicated by a dashed grey line and rounded corners</strong>. </div>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="text-justify col-sm-4"> Click here to select this<strong> column.</strong> Always place your content within a column. Columns are indicated by a dashed blue line. </div>
-    <div class="col-sm-4 text-justify"> You can <strong>resize a column</strong> using the handle on the right. Drag it to increase or reduce the number of columns.</div>
-    <div class="col-sm-4 text-justify"> You can <strong>offset a column</strong> using the handle on the left. Drag it to increase or reduce the offset. </div>
-  </div>
-  <hr>
-
-  <div class="row">
-    <div class="col-sm-4 text-center">
-      <h4>Adding <strong>Buttons</strong></h4>
-      <p>Quickly add buttons to your page by using the button component in the insert panel. </p>
-      <button type="button" class="btn btn-info btn-sm">Info Button</button>
-      <button type="button" class="btn btn-success btn-sm">Success Button</button>
-    </div>
-    <div class="text-center col-sm-4">
-      <h4>Adding <strong>Labels</strong></h4>
-      <p>Using the insert panel, add labels to your page by using the label component.</p>
-      <span class="label label-warning">Info Label</span><span class="label label-danger">Danger Label</span> </div>
-    <div class="text-center col-sm-4">
-      <h4>Adding <strong>Glyphicons</strong></h4>
-      <p>You can also add glyphicons to your page from within the insert panel.</p>
-      <div class="row">
-        <div class="col-xs-4"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></div>
-        <div class="col-xs-4"><span class="glyphicon glyphicon-home" aria-hidden="true"> </span> </div>
-        <div class="col-xs-4"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></div>
-      </div>
-    </div>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="text-center col-md-6 col-md-offset-3">
-      <h4>Footer </h4>
-      <p>Copyright &copy; 2015 &middot; All Rights Reserved &middot; <a href="http://yourwebsite.com/" >My Website</a></p>
-    </div>
-  </div>
-  <hr>
->
-</div>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
 	<br>
 	<br>
 	<br>
@@ -176,11 +144,10 @@ $("table").width(width) ; //设置table宽度
     <div class="text-center col-md-6 col-md-offset-3">
       <ul class="pagination">
     <li><a href="#">&laquo;</a></li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
+    		<li><a href="searchThread?threadName=${searchName}&start=0">首 页</a></li>
+		<li><a href="searchThread?threadName=${searchName}&start=${pre}">上一页</a></li>
+		<li><a href="searchThread?threadName=${searchName}&start=${next}">下一页</a></li>
+		<li><a href="searchThread?threadName=${searchName}&start=${last}">末 页</a></li>
     <li><a href="#">&raquo;</a></li>
 </ul>
     </div>

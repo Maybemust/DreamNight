@@ -24,6 +24,7 @@ public class AddCommitServlet extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
+		User USER=(User)request.getSession().getAttribute("USER");
 		String commitFromAccount="";
 		
 		//Date now =new Date();
@@ -47,6 +48,7 @@ public class AddCommitServlet extends HttpServlet {
 		}catch(NumberFormatException e){
 			
 		}
+		commitFromAccount=USER.getAccount();
 		System.out.print(commitText);
 
 		Commit commit=new Commit(commitFromAccount,commitPostTime,commitText,threadID);
@@ -77,7 +79,9 @@ public class AddCommitServlet extends HttpServlet {
 
 		List<Commit> commits = new ToCommit().list(start, count, threadID);
 		
-		
+		int a = new ToCommit().resetCommitNum(threadID);
+		new ToCommit().resetCommitNum(threadID,a);
+		threads = new ToThread().get(threadID);
 		request.setAttribute("commits", commits);
 		request.setAttribute("threads", threads);
 		request.setAttribute("threadID", threadID);
