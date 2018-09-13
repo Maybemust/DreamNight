@@ -36,7 +36,8 @@ public class PdChange  extends HttpServlet{
 			user.setPassword(newpd);
 			touser.update(user);
 		}
-		System.out.println(oldpd + " " + newpd + " " + checkpd + " " + account);
+		USER=touser.get(USER.getAccount());
+		request.getSession().setAttribute("USER", USER);
 		request.getRequestDispatcher("getUser?account="+account).forward(request, response);
 
 	}

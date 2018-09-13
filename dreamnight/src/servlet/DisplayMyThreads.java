@@ -23,8 +23,7 @@ public class DisplayMyThreads extends HttpServlet {
 		int count = 5;
 		String fromaccount="";
 		try {
-			fromaccount = request.getParameter("fromaccount");
-			System.out.println(fromaccount);
+			start = Integer.parseInt(request.getParameter("start"));
 			
 		} catch (NumberFormatException e) {
 		

@@ -39,7 +39,8 @@ public class securityChange  extends HttpServlet{
 			user.setAnswer(newans);
 			touser.update(user);
 		}
-		System.out.println(oldque + " " + newque + " " + oldans + " " + newans + " " + account);
+		USER=touser.get(USER.getAccount());
+		request.getSession().setAttribute("USER", USER);
 		request.getRequestDispatcher("getUser?account="+account).forward(request, response);
 	}
 }

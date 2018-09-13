@@ -33,7 +33,7 @@
     <![endif]-->
 </head>
 <body onload="resize();" onresize="resize();">
-<script src="js/JQuery.min.js"></script> //别忘了引入JQeury的js文件
+<script src="js/JQuery.min.js"></script>
 <script>
 function resize() {
 var width = $(document).width() ; //获取浏览器宽度

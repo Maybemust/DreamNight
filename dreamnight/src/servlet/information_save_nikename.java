@@ -28,6 +28,8 @@ public class information_save_nikename  extends HttpServlet{
 		account=USER.getAccount();
 		ToUser touser = new ToUser();
 		touser.update_nikename(account,nickname);
+		USER=touser.get(USER.getAccount());
+		request.getSession().setAttribute("USER", USER);
 		System.out.println(account);
 		request.getRequestDispatcher("getUser?account="+account).forward(request, response);
 	}

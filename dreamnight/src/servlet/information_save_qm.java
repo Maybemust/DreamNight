@@ -29,6 +29,8 @@ public class information_save_qm  extends HttpServlet{
 		account=USER.getAccount();
 		ToUser touser = new ToUser();
 		touser.update_qm(account,qm);
+		USER=touser.get(USER.getAccount());
+		request.getSession().setAttribute("USER", USER);
 		request.getRequestDispatcher("getUser?account="+account).forward(request, response);
 	}
 }
