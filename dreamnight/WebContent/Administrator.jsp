@@ -16,9 +16,8 @@
 
 <body>
 	<div>
-		<img src="./images/search_50px.png" alt="search" width="17" height="17" style="position:relative;top:6px;right:15px">
-		<a href="#" style="color:white;float:right;position:absolute;right:2%;top:2%">返回主页</a>
-		<hr />
+		<a href="#" style="color:white;float:right;position:absolute;right:2%">返回主页</a>
+		<hr style="position:relative;top:20px"/>
 	</div>
 	<div class="div_allinline">
 	
@@ -55,7 +54,7 @@
 				</table>
 				
 				<nav>
-					<ul class="pager";>
+					<ul class="pager">
 						<li><a href="?start=0&op=点击主题管理列表首页">首 页</a></li>
 						<li><a href="?start=${pre}&op=点击主题管理列表上一页">上一页</a></li>
 						<li><a href="?start=${next}&op=点击主题管理列表下一页">下一页</a></li>
@@ -66,6 +65,8 @@
 
 			<div class="user">
 				<h2 style="font-weight: bold;font-size: 250%;">用户管理</h2>
+				
+				<c:if test="${account.authority > 2}">
 				<table border = "1">
 					<tr style="background-color:#7E94B5;font-weight:bold;">
 						<td style="width: 800px;">用户名</td>
@@ -94,9 +95,32 @@
 					</tr>
 				</c:forEach>
 				</table>
+				</c:if>
+				
+				<c:if test="${account.authority == 2}">
+				<table border = "1">
+					<tr style="background-color:#7E94B5;font-weight:bold;">
+						<td style="width: 800px;">用户名</td>
+						<td style="width:200px;">加锁</td>
+					</tr>
+				<c:forEach items="${users}" var="user" varStatus="st">
+					<tr>
+						<td>${user.account}</td>
+						<td>
+							<c:if test = "${user.authority == 0}">
+							<a href = "setAuthority?account=${user.account}&key=1&op=加锁操作">加锁</a>
+							</c:if>
+							<c:if test = "${user.authority == 1}">
+							<a href = "setAuthority?account=${user.account}&key=0&op=解锁操作">解锁</a>
+							</c:if>
+						</td>
+					</tr>
+				</c:forEach>
+				</table>
+				</c:if>
 				
 				<nav>
-					<ul class="pager";>
+					<ul class="pager">
 						<li><a href="?ustart=0&op=点击用户管理列表首页">首 页</a></li>
 						<li><a href="?ustart=${upre}&op=点击用户管理列表上一页">上一页</a></li>
 						<li><a href="?ustart=${unext}&op=点击用户管理列表下一页">下一页</a></li>
@@ -107,13 +131,18 @@
 		</div>
 		
 		<div class="subdiv_allinline account">
-			<a href="#"><img src="images/logo.jfif" style = "height:100px; width:100px; position:absolute; right:24%; top:5%;" alt="头像"></a>
-			<div style = "text-align:center; position:absolute; right:50%; top:20%;">
-				<a href="#">${account.nikeName}</a>
-				<p>${account.account}</p>
-				<p>${account.authority}</p>
+			<img src="./images/admin.png" style = "height:100px; width:100px; position:absolute; right:24%; top:5%;" alt="头像">
+			<div style = "text-align:left; position:absolute; left: 10%;top:35%;">
+				<p>昵称：${account.nikeName}<p>
+				<p>账号：${account.account}</p>
+				
+				<c:if test = "${account.authority > 2}">
+				<p>权限：超级管理员</p>
+				</c:if>
+				<c:if test = "${account.authority == 2}">
+				<p>权限：管理员</p>
+				</c:if>
 			</div>
-			
 		</div>
 
 	

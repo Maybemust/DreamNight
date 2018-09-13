@@ -36,16 +36,11 @@ public class AddCommitServlet extends HttpServlet {
 		//String threadLastCommitName = "";//最晚发帖人
 		//String threadLastText = "";//最晚发帖内容
 		int start = 0;
-		int id=0;
 		try{		
 			commitText=request.getParameter("textfield");
 			
 			threadID=Integer.parseInt(request.getParameter("threadID"));
-//			threadTopLabel=Integer.parseInt(request.getParameter("toplabel"));
 
-			//commitPostTime = Timestamp.valueOf(request.getParameter("postTime"));
-			//threadLastCommitName=request.getParameter("lastcommittext");
-			//threadLastText=request.getParameter("lastcommitname");
 			commitFromAccount = request.getParameter("fromAccount");
 			System.out.println("==========>"+commitFromAccount);
 
@@ -53,27 +48,17 @@ public class AddCommitServlet extends HttpServlet {
 			
 		}
 		System.out.print(commitText);
-//		Thread s=new Thread(threadName, threadFromAccount, threadNumCommit, threadNumRead, threadPostTime, threadLastCommitTime, 
-//				threadID, threadTopLabel, threadText);
-//		new ToThread().add(s);
-		
+
 		Commit commit=new Commit(commitFromAccount,commitPostTime,commitText,threadID);
 		new ToCommit().add(commit);
 		
-		System.out.println("==========>"+commit.toString());
+		System.out.println("==========>"+commitPostTime.toString());
 		int count = 5;
-//
-//		try {
-//			start = Integer.parseInt(request.getParameter("start"));
-//		} catch (NumberFormatException e) {
-//			// 当浏览器没有传参数start时
-//		}
-//
+
 		int next = start + count;
 		int pre = start - count;
 
 		int total = new ToCommit().getTotal(threadID);
-		System.out.print(total);
 		
 		int last;
 		if (0 == total % count)
@@ -97,27 +82,26 @@ public class AddCommitServlet extends HttpServlet {
 		request.setAttribute("threads", threads);
 		request.setAttribute("threadID", threadID);
 		
-		String  threadName = threads.getThreadName();
-		String threadFromAccount = threads.getFromAccount();
-		int threadNumCommit = threads.getNumCommit();
-		int threadNumRead = threads.getNumReading();
-		String threadText = threads.getText();
-		
-		request.setAttribute("threadText", threadText);
-		request.setAttribute("threadFromAccount", threadFromAccount);
-		request.setAttribute("threadName", threadName);
-		request.setAttribute("threadNumCommit", threadNumCommit);
-		request.setAttribute("threadNumRead", threadNumRead);
-		
-		request.setAttribute("commitFromAccount", commitFromAccount);
+		request.setAttribute("committime", commitPostTime);
+		System.out.println("=======w===>"+commitPostTime.toString());
 
+		request.setAttribute("thread", threads);
+
+//		String  threadName = threads.getThreadName();
+//		String threadFromAccount = threads.getFromAccount();
+//		int threadNumCommit = threads.getNumCommit();
+//		int threadNumRead = threads.getNumReading();
+//		String threadText = threads.getText();
+//		
 //		request.setAttribute("threadText", threadText);
 //		request.setAttribute("threadFromAccount", threadFromAccount);
 //		request.setAttribute("threadName", threadName);
 //		request.setAttribute("threadNumCommit", threadNumCommit);
 //		request.setAttribute("threadNumRead", threadNumRead);
+//		request.setAttribute("commitPostTime", commitPostTime);
 //		
-		//System.out.print(threadText);
+//		request.setAttribute("commitFromAccount", commitFromAccount);
+
 		request.getRequestDispatcher("threadDetails.jsp").forward(request, response);
 
 	}

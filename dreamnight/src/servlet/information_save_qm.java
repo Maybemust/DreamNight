@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import entity.User;
-import updateTo.ToUser;
+import entity.*;
+import updateTo.*;
 
 public class information_save_qm  extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response)
