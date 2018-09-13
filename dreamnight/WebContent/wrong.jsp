@@ -3,25 +3,31 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>log in</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Wrong</title>
 </head>
 <head>
 	<style>
-		.blocks{  
-			width:200px;
-			height: 150px;
-			background-color: aliceblue;
-            margin:500px;
-			margin-top: 50px;
-			margin-bottom: auto;
-			padding-top: 30px;
-			padding-bottom: 50px;
-			padding-left: 30px;
-			padding-right: 30px;
-            border-radius:8px;
-			align-content: center;
-		}
+		body{
+		background-image: url(images/stars.jpg);
+		background-color: #36465D;
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+		background-size: cover;
+		width:auto;
+	}
+		.blocks{
+		background-color: rgba(255,255,255,0.74);
+		border-radius: 8px;
+		padding-left: 3%;
+		padding-right: 3%;
+		padding-top: 2%;
+		padding-bottom: 2%;
+		position:relative;
+		margin:auto;
+		height:250px;
+		width:150px;
+	}	
 		</style>
 	</head>
 	<body style="background-color:#36465D;" background="./images/stars.jpg">

@@ -19,7 +19,7 @@
 	}
 	#all{
 		width:auto;
-		height: 2000px;
+		height: auto;
 		margin:0px auto;/*主面板DIV居中*/
 		z-index: 2;
 		opacity: 1;	
@@ -45,18 +45,6 @@
 		left:40%;
 		border:0;
 	}
-	@media screen and (max-width: 600px) {
-		#person{
-			width:1400px;
-		}
-		#per_picture{
-			clear:both;
-			float: left;
-			width: 600px;
-		}
-		
-	}
-    /* --------我是分割线-----------------*/
 	#pd{
 		position: relative;
 		left:40%;
@@ -71,12 +59,100 @@
 		position: relative;
 		left:40%;
 		border: 0;
+		width:500px;
 	}
 	#gohome{
 		position: relative;
 		left:40%;
 		border: 0;
 	}
+	#pd_button{
+		position: relative;
+		left:0%;
+		border: 0;
+	}
+	#safetip_b{
+		position: relative;
+		left:0%;
+		border: 0;
+	}
+	#sd_button{
+		position: relative;
+		left:0%;
+		border: 0;
+	}
+	 /* --------我是分割线-----------------*/
+	@media screen and (max-width: 815px) {
+		#person{
+			width:1000px;
+		}
+		#per_picture{
+			clear:both;
+			float: left;
+			width: 500px;
+		}
+		#per_picture{
+		position:absolute;
+		left:30%;
+		border:0;
+	}
+	#pd{
+		position: relative;
+		left:30%;
+		border: 0;
+	}
+	#safetip{
+		position: relative;
+		left:30%;
+		border: 0;
+	}
+	#per_style{
+		position: relative;
+		left:30%;
+		border: 0;
+	}
+	#gohome{
+		position: relative;
+		left:30%;
+		border: 0;
+	}
+	
+@media screen and (max-width: 500px) {
+		#person{
+			width:1000px;
+		}
+		#per_picture{
+			clear:both;
+			float: left;
+			width: 500px;
+		}
+		#per_picture{
+		position:absolute;
+		left:50px;
+		border:0;
+	}
+	#pd{
+		position: relative;
+		left:50px;
+		border: 0;
+	}
+	#safetip{
+		position: relative;
+		left:50px;
+		border: 0;
+	}
+	#per_style{
+		position: relative;
+		left:50px;
+		border: 0;
+	}
+	#gohome{
+		position: relative;
+		left:50px;
+		border: 0;
+	}
+
+}
 </style>
 <style>  
   
@@ -233,6 +309,8 @@
 }
 
 </style>
+<meta name="viewport"  content="width=device-width,
+minimum-scale=1.0, maximum-scale=2.0; charset=UTF-8">
 
 </head>
 <body class="body1" id = "body1">
@@ -308,8 +386,10 @@ function savepd()
 	<p>新密密码:  <input id = "newpd" name = "newpd" type = "password" maxlength="14"></p><br/>
 	<p>确认密码:  <input id = "checkpd" name = "checkpd" type = "password" maxlength="14"></p><br/>
 	<input id = "pd_account" name = "pd_account" type="text" style="display:none" value=${user.account } />
-	<button id = "cleanpassword" type="button" onclick="cleanpd()" style="margin-right:100px;">重置</button>		
-	<button id = "savenewpassword" type="button" onclick="savepd()" style="margin-right:150px;">保存</button>	
+	<div id="pd_button">
+		<button id = "cleanpassword" type="button" onclick="cleanpd()" style="margin-right:100px;">重置</button>		
+		<button id = "savenewpassword" type="button" onclick="savepd()">保存</button>	
+	</div>
 </form>
 <script>
 function cleantip()
@@ -338,7 +418,7 @@ function savetip()
 
 }
 </script>	
-<form class="safetip" id = "safetip" action="securityChange">
+<form class="safetip" id = "safetip" method="post" action="securityChange">
 	<p>密保设置：</p><br/>
 	<p>密保问题:&ensp;&ensp;<input id = "oldque" name="oldque" type = "text" readonly="readonly" font-family:SimSun;font-size: 20px; value=${user.security }></p><br/>
 	<p>密保答案:&ensp;&ensp;<input id = "oldans" name="oldans" type = "password" font-family:SimSun;font-size: 20px;></p><br/>
@@ -347,7 +427,7 @@ function savetip()
 	<input id = "security_account" name = "security_account" type="text" style="display:none" value=${user.account } />
 	<div class="safetip_b" id = "safetip_b">
 		<button id = "cleansafetip" type="button" onclick="cleantip()" style="margin-right:100px;">重置</button>
-		<button id = "savesafetip" type="button" onclick="savetip()" style="margin-right:150px;">保存</button>
+		<button id = "savesafetip" type="button" onclick="savetip()">保存</button>
 	</div>
 </form>
 <div class = "gohome" id = "gohome">

@@ -8,49 +8,41 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>forget password</title>
 </head>
 <head>
 	<style>
-		#all{
-			width:auto;
-			height:auto;
-		}
-		#blocks{  
-			width:300px;
-			height: 270px;
-			background-color: aliceblue;
-            margin-top:130px;
-			position: absolute;
-			left:40%;
-			padding-top: 20px;
-			padding-bottom: 0px;
-			padding-left: 30px;
-			padding-right: 30px;
-            border-radius:8px;
-		}
-		@media screen and (max-width: 600px){
-			#blocks{  
-				left:20%;
-			}
-		}
-		@media screen and (max-width: 400px){
-			#blocks{  
-				left:10%;
-			}
-		}
+		body{
+		background-image: url(images/stars.jpg);
+		background-color: #36465D;
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+		background-size: cover;
+		width:auto;
+	}
+		.blocks{
+		background-color: rgba(255,255,255,0.74);
+		border-radius: 8px;
+		padding-left: 3%;
+		padding-right: 3%;
+		padding-top: 2%;
+		padding-bottom: 2%;
+		position:relative;
+		margin:auto;
+		height:250px;
+		width:250px;
+	}	
 		</style>
 	</head>
 <body style="background-color:#36465D;" background="./images/stars.jpg">
-<div id="all">
 	<br>
 	<br>
 	<br>
 	<br>
 	<h1></h1>
 	<p>
-	<div class="blocks" id="blocks" style="opacity: 0.77">
+	<div class="blocks" style="opacity: 0.77">
 	<h2>密保问题：</h2>
 		<p>
 			<form action="toForgetPassword" method="post">
@@ -58,11 +50,12 @@
 				<b>${security}</b>	
 				</div><br>
 <div>答 案：</div>
-<input type="text" name="answer" style="width: 235px;height: 20px">
+<input type="text" name="answer" style="width: 99%;height: 20px">
 	<input type="hidden" name="account" value="${account}">	
 				<br>
 				<br>
-				<input type="submit" value="下一步" style="align-content:center;background-color:#666666;color: aliceblue ;width: 235px; height: 30px;border-radius: 8px;font-size: 20px">
+				<input type="submit" value="下一步" style="align-content:center;background-color:#666666;color: aliceblue ;
+				width: 99%; height: 30px;border-radius: 8px;font-size: 20px">
 		</form>
 		<br>
 </body>
@@ -71,5 +64,4 @@
 				var urlb = location.search;
 				var reg = new RegExp("(^|&)"+ "account" +"=([^&]*)(&|$)");
 			    var r = window.location.search.substr(1).match(reg);
-			    var str=unescape(r[2]);
-</script>
+			    var str=unescape(r[2]);</script>

@@ -48,9 +48,31 @@ body {
 	float: left;
 }
 #container2_2{
-	width: 500px; 
+	width: 250px; 
 	height: 100px; 
 	float: left;
+}
+#container2_3{
+	width: 250px; 
+	height: 100px; 
+	float: left;
+}
+#goback{
+	position:relative;
+  display: inline-block;
+  padding: 8px 45px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;   
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #10154E;
+  border: none;
+  border-radius: 15px;
+  margin-top: 48px;
+  left:220px;
+
 }
 #unknow{
 	background: #FFFFFF; 
@@ -96,6 +118,27 @@ body {
 	width: 383px; 
 	height: 100px; 
 	float: left;
+}
+#container2_3{
+	width: 200px; 
+	height: 100px; 
+	float: left;
+}
+#goback{
+	position:relative;
+  display: inline-block;
+  padding: 8px 45px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;   
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  margin-top: 48px;
+  left:-190px;
+
 }
 #unknow{
 	background: #FFFFFF; 
@@ -150,6 +193,9 @@ body {
 			<a href="displayCommit"><img src="./images/myfollowbutton.png"
 				alt="关于我的跟帖" style="float: left; margin-top: 50px;"></a>
 		</div>
+		<div id="container2_3">
+			<button id="goback" type="button" onclick="location.href = 'firstPage'">返回主页</button>
+		</div>
 	</div>
 	<div id="unknow">
 		     <div class="text-center col-md-9;">
@@ -170,9 +216,9 @@ body {
 		  <br>
 		  <br>
 		 	<div>
-<form action = "passThreadID" method="post" id="form1">
-<input type="hidden" name = "ThreadID" value = ${Thread.threadID}>
-</form>
+		<form action = "passThreadID" method="post" id="form1">
+			<input type="hidden" name = "ThreadID" value =${Thread.threadID}>
+		</form>
 </div>
 		 <div class="text-center col-md-1" >
 		 <a style= "float:left;">${Thread.fromAccount}</a>
@@ -196,11 +242,10 @@ body {
 				window.open(urlc,"_blank");
 			}
 </script>
-<div>
-</div>
+
 </c:forEach>
 </table>	
-    </div>
-	</div>
+</div>
+</div>
 </body>
 </html>

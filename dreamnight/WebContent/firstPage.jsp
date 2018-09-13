@@ -41,16 +41,19 @@ $("table").width(width) ; //设置table宽度
 </script>
 
 
+
 <nav class="navbar navbar-default" style="background-color: #36465D">
   <div class="container-fluid"> 
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
       <a class="navbar-brand" href="#" style="width:100px;color:#FACD0B;padding-left: 20px;">梦夜</a></div>
 	  
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="defaultNavbar1" style="background-color: #36465D">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-		  <img src="./images/logo.JPG" style="padding-top:2px;padding-left: 5px; height:50px">
+      
+      		  <img src="./images/logo.JPG" style="padding-top:2px;padding-left: 5px; height:50px">
         <span class="sr-only"></span>
       </ul>
       <form class="navbar-form navbar-left" role="search">
@@ -59,6 +62,8 @@ $("table").width(width) ; //设置table宽度
         </div>
         <button type="submit" class="btn btn-default" onclick="getValueAndSkip()" style = "font-size:18px" >搜 索</button>
       </form>
+      
+      
       <ul class="nav navbar-nav navbar-right">
       <c:if test="${USER.getAuthority() >= 2}">
       <a href="admin" style="font-weight:bold; color: #C8C8C8"><img src="./images/admin.png" style="padding-top:2px;padding-left: 5px; height:50px"></a>
@@ -78,6 +83,8 @@ $("table").width(width) ; //设置table宽度
   </div>
   <!-- /.container-fluid --> 
 </nav>
+
+
 <%!String [] str1; %>
 	<script>
 	function getValueAndSkip(){
@@ -95,8 +102,37 @@ $("table").width(width) ; //设置table宽度
 </div>
 <div class="container">
 
-	  <div class="row">
-    <div class="text-center col-md-9" >
+	  <div class="col">
+	  
+	  <div>
+	  <c:if test="${USER!=NULL}">
+	<div class="col-md-3 hidden-xs "  style="float:right">
+	<div class="col-md-12 "  style="float:right">
+		<div class="panel panel-default">
+
+  <div class="panel-heading">
+	  <a href="displayThread"><img src="./images/person4.jpg" style="float:center;width:90%;padding-left:25px;"></a>
+	  <br>
+    <h3 class="panel-title" align="center">用户名:${USER.getAccount()}</h3>
+  </div>
+  <div class="panel-body">
+        <a href="#" style="font-weight:bold; color:#BCBCBC; float:left;padding-left: 10px">个性签名：${USER.getPersonality()}</a>
+		<a href="#" style="color:#C8C8C8;padding-right: 10px" ></a>
+  </div>
+  </div>
+  </div>
+  <div class="col-md-12 " style="float:right">
+		 <div class="panel panel-default">
+		 <h3 class="panel-title" align="center"><button onclick="addThread()" style="float:center;width:99%;">发表</button></h3>
+		 </div>
+		 
+		 </div>
+	</div>
+		
+</c:if>
+
+
+    <div class="text-center col-md-9 col-xs-12" style = "float:center" >
 	<table style="width: 500px; margin: 44px auto"
 	class="table table-striped table-bordered table-condensed"
 	align='center' border='1' cellspacing='0' >
@@ -171,26 +207,7 @@ $("table").width(width) ; //设置table宽度
 
 </table>	
     </div>
-<c:if test="${USER!=NULL}">
-	<div class="col-md-3 " >
-		<div class="panel panel-default">
 
-  <div class="panel-heading">
-	  <a href="displayThread"><img src="./images/person4.jpg" style="padding-left: 15px;padding-top:5px" height="200px"></a>
-	  <br>
-    <h3 class="panel-title" align="center">用户名:${USER.getAccount()}</h3>
-  </div>
-  <div class="panel-body">
-        <a href="#" style="font-weight:bold; color:#BCBCBC; float:left;padding-left: 10px">个性签名：${USER.getPersonality()}</a>
-		<a href="#" style="color:#C8C8C8;padding-right: 10px" ></a>
-  </div>
- 
-</div>
-</div>
-		 <div class="col-md-3 " >
-		 <div class="panel panel-default">
-		 <h3 class="panel-title" align="center"><button onclick="addThread()" style="float:center;width:260px;">发表</button></h3>
-</c:if>
 		 <script>
 		 function addThread(){
 			 var urla = "addThread";

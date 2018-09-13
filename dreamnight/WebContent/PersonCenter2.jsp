@@ -48,9 +48,31 @@ body {
 	float: left;
 }
 #container2_2{
-	width: 500px; 
+	width: 250px; 
 	height: 100px; 
 	float: left;
+}
+#container2_3{
+	width: 250px; 
+	height: 100px; 
+	float: left;
+}
+#goback{
+	position:relative;
+  display: inline-block;
+  padding: 8px 45px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;   
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #10154E;
+  border: none;
+  border-radius: 15px;
+  margin-top: 48px;
+  left:220px;
+
 }
 #unknow{
 	background: #FFFFFF; 
@@ -96,6 +118,27 @@ body {
 	width: 383px; 
 	height: 100px; 
 	float: left;
+}
+#container2_3{
+	width: 200px; 
+	height: 100px; 
+	float: left;
+}
+#goback{
+	position:relative;
+  display: inline-block;
+  padding: 8px 45px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;   
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  margin-top: 48px;
+  left:-190px;
+
 }
 #unknow{
 	background: #FFFFFF; 
@@ -150,60 +193,55 @@ body {
 			<img src="./images/myfollow.png"
 				alt="关于我的跟帖" style="float: left; margin-top: 50px;">
 		</div>
+		<div id="container2_3">
+			<button id="goback" type="button" onclick="location.href = 'firstPage'">返回主页</button>
+		</div>
 	</div>
-		<div style="background:#FFFFFF;width: 800px;height: 1000px;float: left;margin-left: 350px;margin-top: 0px;">
-        <div class="text-center col-md-9;">
-	<table style="width: 500px; margin: 44px auto;background: #36465D"
-	class="table table-striped table-bordered table-condensed"
-	align='center' border='1' cellspacing='0' >
+<div id="unknow">
+	<div class="text-center col-md-9;">
+		<table style="width: 500px; margin: 44px auto;background: #36465D" class="table table-striped table-bordered table-condensed" align='center' border='1' cellspacing='0' >
 	<tr>
 	</tr>
-		<c:forEach items="${Commits}" var="Commit" varStatus="st">
-		<tr>
+  	<c:forEach items="${Commits}" var="Commit" varStatus="st">
+	<tr>
 		<td>      
-		<div class="well" ><strong> 
-		<img src = "./images/person2.JPG" alt="user_pic" style= "float: left; height:40px; width:60px;padding-left: 20px">
-		  <p style= "float:left;padding-left: 20px;padding-top:10px">:</p>
-		  <!--a href="threadDetails?threadID=${thread.threadID}" style = "float:left;padding-left: 5px;padding-top:1px;font-size:17px"-->
-		  <p style = "float:left;padding-left: 5px;padding-top:1px;font-size:17px">
-		  ${Commit.fromAccount}</p></strong>
-		  <br>
-		  <br>
-		 	<div>
-<form action = "passCommitID" method="post" id="form1">
-<input type="hidden" name = "CommitID" value = ${Commit.commitID}>
-</form>
-</div>
-		 <div class="text-center col-md-1" >
-		 <p style= "float:center;color: #36465D">Commit.fromAccount</p>
-		 </div>
+			<div class="well" ><strong> 
+				<img src = "./images/person2.JPG" alt="user_pic" style= "float: left; height:40px; width:60px;padding-left: 20px">
+		 		 <p style= "float:left;padding-left: 20px;padding-top:10px">:</p>
+				
+		 		 <p style = "float:left;padding-left: 5px;padding-top:1px;font-size:17px"> ${Commit.fromAccount}</p></strong>
+		 		 <br>
+		 		 <br>
+		 		<div>
+					<form action = "passCommitID" method="post" id="form1">
+						<input type="hidden" name = "CommitID" value = ${Commit.commitID}>
+					</form>
+		 		</div>
+		 		<div class="text-center col-md-1" >
+			 		<p style= "float:center;color: #36465D">Commit.fromAccount</p>
+				 </div>
 		  
-		  <hr class="hr1">
-		  <a style = "float:center;padding-left:5px;font-size: 20px;color:#3A3A3A">${Commit.text}</a>
-		  <hr class="hr1">
-		  <ul class="nav navbar-nav navbar-right">
-        		<li><a href="#" style="font-weight:bold;">跟帖时间:${Commit.postTime}</a></li>
-				<li><a href="#">删除该跟帖</a></li>
-      		</ul>
-		  <br>
-		  </div>
-		  </td>
-		</tr>
-
-<script>
+		  		<hr class="hr1">
+		 		<a style = "float:center;padding-left:5px;font-size: 20px;color:#3A3A3A">${Commit.text}</a>
+		  		<hr class="hr2">
+		  		<ul class="nav navbar-nav navbar-right">
+        			<li><a href="#" style="font-weight:bold;">跟帖时间:${Commit.postTime}</a></li>
+					<li><a href="deleteCommit?id=${Commit.getCommitID()}">删除该跟帖</a></li>
+      	  		</ul>
+		 		<br>
+	 	</div>
+	 </td>
+   </tr>
+		<script>
 			passIdAndSkip(id1){
 				alert(111);
 				var urlc = "threadDetails";
 				window.open(urlc,"_blank");
 			}
-</script>
-<div>
-</div>
-</c:forEach>
-</table>	
-    </div>
-	
-	
-	</div>	
+		</script>
+   </c:forEach>
+  </table>	
+ </div>
+</div>	
 </body>
 </html>

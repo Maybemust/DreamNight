@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		border-radius: 3px;
 		border: none;
 		height: 25px;
-		width: 300px;
+		width: 90%;
 	}
 	.myh{
 		line-height: 1px;
@@ -55,15 +55,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	}
 	.myhr{
 		position:relative;
-		left: -40px;
-		width: 337.5px;
+		left: -30px;
+		width: 97%;
 	}
 	.mysubmit{
 		background-color:#2E0571;
 		color:#FFFFFF;
 		border-radius: 6px;
 		height: 40px;
-		width: 250px;
+		width: 90%;
 		border: none;
 		font-size: 18px;
 		font-weight: bold;
@@ -93,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		border-radius: 3px;
 		border: none;
 		height: 25px;
-		width: 250px;
+		width: 95%;
 	}
 	.myh{
 		line-height: 1px;
@@ -127,7 +127,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		color:#FFFFFF;
 		border-radius: 6px;
 		height: 40px;
-		width: 250px;
+		width: 95%;
 		border: none;
 		font-size: 18px;
 		font-weight: bold;
