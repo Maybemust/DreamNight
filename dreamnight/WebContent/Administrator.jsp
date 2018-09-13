@@ -16,7 +16,7 @@
 
 <body>
 	<div>
-		<a href="#" style="color:white;float:right;position:absolute;right:2%">返回主页</a>
+		<a href="firstPage" style="color:white;float:right;position:absolute;right:2%">返回主页</a>
 		<hr style="position:relative;top:20px"/>
 	</div>
 	<div class="div_allinline">

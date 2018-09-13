@@ -60,6 +60,8 @@ $("table").width(width) ; //设置table宽度
         <button type="submit" class="btn btn-default" onclick="getValueAndSkip()" style = "font-size:18px" >搜 索</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
+      <a href="admin" style="font-weight:bold; color: #C8C8C8"><img src="./images/admin.png" style="padding-top:2px;padding-left: 5px; height:50px"></a>
+      <a href="admin" style="font-weight:bold; color: #C8C8C8">管理员页面</a>
         <li><a href="#" style="font-weight:bold; color: #FECD00">登  陆</a></li>
 		<li><a href="#" style="color:#C8C8C8" >注  册</a></li>
       </ul>

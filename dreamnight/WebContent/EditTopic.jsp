@@ -30,7 +30,8 @@
 		
 		<textarea name="text" style="width:550px;height:300px;position:relative;top:30px;left:25px">${thread.text}</textarea>
 		<input type="submit" value="save" style="position:relative;top:72px;left:-100px" />
-		<input type="button" onclick="history.go(-1)" value="back" style="position:relative;top:50px;left:380px" />
+		<a href = "${fromPage}"><input type="button" value="back" style="position:relative;top:50px;left:380px" /></a>
+
 		</form>
 	</div>
 	

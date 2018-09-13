@@ -56,9 +56,11 @@ public class AddThread extends HttpServlet {
 		System.out.println("666666666666666666666666");
 		System.out.println(newthread.toString());
 		System.out.println("7777777777777777777777777");
-		String url="editTopic?threadID="+newthread.getThreadID()+"&fromPage=firstPage";
+		//String url="editTopic?threadID="+newthread.getThreadID()+"&fromPage=firstPage";
+		request.setAttribute("thread", newthread);
+		request.setAttribute("fromPage", "firstPage");
 		System.out.println("8888888888888888888888888888");
-		request.getRequestDispatcher(url).forward(request, response);
+		request.getRequestDispatcher("EditTopic.jsp").forward(request, response);
 
 	}
 

@@ -147,7 +147,7 @@ body {
 				style="float: right; margin-top: 50px;">
 		</div>
 		<div id="container2_2">
-			<a href="跟帖页.html"><img src="./images/myfollowbutton.png"
+			<a href="displayCommit"><img src="./images/myfollowbutton.png"
 				alt="关于我的跟帖" style="float: left; margin-top: 50px;"></a>
 		</div>
 	</div>
