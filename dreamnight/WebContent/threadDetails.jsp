@@ -59,8 +59,14 @@ $("table").width(width) ; //设置table宽度
             </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="firstPage?start=0" style="font-weight:bold; color:#BCBCBC">返回首页</a></li>
-        <li><a href="#" style="font-weight:bold; color:#BCBCBC">登陆</a></li>
-		<li><a href="#" style="color:#C8C8C8" >注册</a></li>
+      	<c:if test="${USER==NULL}">
+        <li><a href="login.jsp" style="font-weight:bold; color: #FECD00">登  陆</a></li>
+		<li><a href="register.jsp" style="color:#C8C8C8" >注  册</a></li>
+      </c:if>
+      <c:if test="${USER!=NULL}">
+        <li><a href="login.jsp" style="font-weight:bold; color: #FECD00">退出登陆</a></li>
+		
+      </c:if>
       </ul>
     </div>
     <!-- /.navbar-collapse --> 

@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -70,12 +71,19 @@ public class ListServlet extends HttpServlet{
 		request.setAttribute("upre", upre);
 		request.setAttribute("ulast", ulast);
 		
-		User user = (User)request.getSession().getAttribute("USER");
+		User USER = (User)request.getSession().getAttribute("USER");
 		
 		List<entity.Thread> threads = tothread.list(start, count);
 		List<entity.User> users = touser.list(ustart, count);
+		
+		for(int i = 0; i < users.size(); i++){
+			if(users.get(i).getAuthority() >= 3){
+				users.remove(i);
+			}
+		}
+		
 		request.setAttribute("threads", threads);
-		request.setAttribute("account", user);
+		request.setAttribute("account", USER);
 		request.setAttribute("users", users);
 		
 		request.getRequestDispatcher("Administrator.jsp").forward(request, response);

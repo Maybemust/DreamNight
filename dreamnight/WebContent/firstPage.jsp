@@ -60,10 +60,18 @@ $("table").width(width) ; //设置table宽度
         <button type="submit" class="btn btn-default" onclick="getValueAndSkip()" style = "font-size:18px" >搜 索</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
+      <c:if test="${USER.getAuthority() >= 2}">
       <a href="admin" style="font-weight:bold; color: #C8C8C8"><img src="./images/admin.png" style="padding-top:2px;padding-left: 5px; height:50px"></a>
       <a href="admin" style="font-weight:bold; color: #C8C8C8">管理员页面</a>
-        <li><a href="#" style="font-weight:bold; color: #FECD00">登  陆</a></li>
-		<li><a href="#" style="color:#C8C8C8" >注  册</a></li>
+      </c:if>
+      	<c:if test="${USER==NULL}">
+        <li><a href="login.jsp" style="font-weight:bold; color: #FECD00">登  陆</a></li>
+		<li><a href="register.jsp" style="color:#C8C8C8" >注  册</a></li>
+      </c:if>
+      <c:if test="${USER!=NULL}">
+        <li><a href="login.jsp" style="font-weight:bold; color: #FECD00">退出登陆</a></li>
+		
+      </c:if>
       </ul>
     </div>
     <!-- /.navbar-collapse --> 
@@ -163,8 +171,10 @@ $("table").width(width) ; //设置table宽度
 
 </table>	
     </div>
+<c:if test="${USER!=NULL}">
 	<div class="col-md-3 " >
 		<div class="panel panel-default">
+
   <div class="panel-heading">
 	  <a href="displayThread"><img src="./images/person4.jpg" style="padding-left: 15px;padding-top:5px" height="200px"></a>
 	  <br>
@@ -180,6 +190,7 @@ $("table").width(width) ; //设置table宽度
 		 <div class="col-md-3 " >
 		 <div class="panel panel-default">
 		 <h3 class="panel-title" align="center"><button onclick="addThread()" style="float:center;width:260px;">发表</button></h3>
+</c:if>
 		 <script>
 		 function addThread(){
 			 var urla = "addThread";

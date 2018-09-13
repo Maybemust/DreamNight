@@ -1,52 +1,157 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!doctype html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<script src="js/jquery.min.js"></script>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="js/bootstrap.min.js"></script>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
 <style>
-	body{
-            background-image:url(main-bg.jpg);
-            background-size:100%;
-        }
+body {
+	background-image: url(./images/main-bg.jpg);
+	background-size: 100%;
+}
 </style>
-	                <meta charset="UTF-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
 
-<title>个人中心</title>
+#container{
+	width: 1500px
+}
+#header{
+	background-color: #36465D; 
+	height: 20px; 
+	opacity: 0;
+}
+#content1{
+	height: 300px; 
+	width: 350px; 
+	float: left;
+}
+#content2{
+	height: 300px; 
+	width: 650px; 
+	float: left;
+}
+#content3{
+	height: 300px; 
+	width: 500px; 
+	float: left;
+}
+#container2{
+	width: 1500px;
+}
+#container2_1{
+	width: 500px; 
+	height: 100px; 
+	float: left;
+}
+#container2_2{
+	width: 500px; 
+	height: 100px; 
+	float: left;
+}
+#unknow{
+	background: #FFFFFF; 
+	width: 800px; 
+	height: 1000px; 
+	float: left; 
+	margin-left: 350px; 
+	margin-top: 0px;
+}
+@media screen and (max-width: 1000px) {
+#container{
+	width: 1000px;
+}
+#header{
+	background-color: #36465D; 
+	height: 20px; 
+	opacity: 0;
+}
+#content1{
+	height: 300px; 
+	width: 233px; 
+	float: left;
+}
+#content2{
+	height: 300px; 
+	width: 434px; 
+	float: left;
+}
+#content3{
+	height: 300px; 
+	width: 333px; 
+	float: left;
+}
+#container2{
+	width: 1000px;
+}
+#container2_1{
+	width: 383px; 
+	height: 100px; 
+	float: left;
+}
+#container2_2{
+	width: 383px; 
+	height: 100px; 
+	float: left;
+}
+#unknow{
+	background: #FFFFFF; 
+	width: 533px; 
+	height: 1000px; 
+	float: left; 
+	margin-left: 233px; 
+	margin-top: 0px;
+}	
+	}
+</style>
+<title>个人中心</title>
 </head>
 
 <body>
 	<a id="top"></a>
-<div id="container" style="width:1500px">
-<div id="header" style="background-color:#36465D; height: 20px; opacity: 0;"></div>
-		
-<div id="content1" style="height: 300px;width: 200px; float:left;">
-<p style="margin-bottom:0;font-size: 30px; text-indent:50px; color:#FEFBFB;">个人中心</p>
-<img src="91529822720e0cf32b1442c60146f21fbe09aa28.jpg" alt="photo" width="100px" height="100px"
-	 style="margin-top: 50px;margin-left: 80px">
-</div>
+	<div id="container">
+		<div id="header"></div>
 
-<div id="content2" style="height: 300px;width: 800px;float: left">
-<p style="margin-top: 120px;margin-left: 50px;color: #FFFFFF">${User.nikeName}
-	<br>
-	<br>
-	<br>
-	<br>
-	${User.personality}</p>
-</div>
-<div id="content3" style="height: 300px;width: 500px; float:left;">
-	<a href="final.html"><img src="button.png" alt="button" style="float: right ;margin-right: 10px;"></a>
-</div>
-</div>
-<div id="container2" style="width: 1500px">
-<div style="width: 500px;height: 100px; float: left;">
-<a href="主贴页.html"><img src="mythoembutton .png" alt="我的主题帖子" style="float: right;margin-top: 50px;"></a>
+		<div id="content1">
+			<input readonly="readonly" value="个人中心" style="color:white;margin-top: 150px; margin-left:100%; border:0px; background:none; font-family:SimSun; font-size: 30px;">
+			<img src="./images/touxiang.jpg" alt="photo" width="100px" height="100px"
+				style="margin-top: 10px; margin-left:100%">
+		</div>
+
+		<div id="content2">
+			<p style="margin-top: 120px; margin-left: 50px; color: #FFFFFF">
+				<input readonly="readonly" value="${sessionScope.USER.account}" style="color:white;margin-top: 75px; margin-left:65px; border:0px; background:none; font-family:SimSun; font-size: 30px;"> <br>
+				<input readonly="readonly" value="${sessionScope.USER.personality}" style="color:white;margin-top: 0px; margin-left:65px; border:0px; background:none; font-family:SimSun; font-size: 30px;"> <br>
+				<a href="getUser"><img src="./images/button.png" alt="button"
+				style="margin-top: 0px; margin-left: 65px;"></a>
+			</p>
+		</div>
+		<div id="content3">
+		<script>
+		var urlb = location.search;
+		var reg = new RegExp("(^|&)"+ "account" +"=([^&]*)(&|$)");
+	    var r = window.location.search.substr(1).match(reg);
+	    var str=unescape(r[2]);
+	    str = ${User.account};
+	    alert(str);
+		</script>
+			
+		</div>
 	</div>
-<div style="width: 500px;height: 100px; float: left;">
-<img src="myfollow.png" alt="关于我的跟帖" style="float: left;margin-top: 50px;">
-	</div>	
+	<div id="container2" >
+		<div id="container2_1">
+			<a href="displayThread"><img src="./images/mythoembutton .png" alt="我的主题帖子"
+				style="float: right; margin-top: 50px;"></a>
+		</div>
+		<div id="container2_2">
+			<img src="./images/myfollow.png"
+				alt="关于我的跟帖" style="float: left; margin-top: 50px;">
+		</div>
 	</div>
-	<div style="background:#FFFFFF;width: 800px;height: 1000px;float: left;margin-left: 350px;margin-top: 0px;">
+		<div style="background:#FFFFFF;width: 800px;height: 1000px;float: left;margin-left: 350px;margin-top: 0px;">
         <div class="text-center col-md-9;">
 	<table style="width: 500px; margin: 44px auto;background: #36465D"
 	class="table table-striped table-bordered table-condensed"
@@ -75,6 +180,7 @@
 		  
 		  <hr class="hr1">
 		  <a style = "float:center;padding-left:5px;font-size: 20px;color:#3A3A3A">${Commit.text}</a>
+		  <hr class="hr1">
 		  <ul class="nav navbar-nav navbar-right">
         		<li><a href="#" style="font-weight:bold;">跟帖时间:${Commit.postTime}</a></li>
 				<li><a href="#">删除该跟帖</a></li>
@@ -99,8 +205,5 @@
 	
 	
 	</div>	
-<div style="float:left;height: 150px;width: 1000px;">
-	<a href="#top"><p style="color: #FFFFFF;margin-top: 60px;margin-left: 716px">返回顶部</p></a>
-	</div>
 </body>
 </html>
