@@ -192,10 +192,10 @@ String datetime=new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance()
     <div class="text-center col-md-6 col-md-offset-3">
       <ul class="pagination">
     <li><a href="#">&laquo;</a></li>
-		<li><a href="threadDetails?threadID=${thread.threadID}&start=0">首 页</a></li>
-		<li><a href="threadDetails?threadID=${thread.threadID}&start=${pre}">上一页</a></li>
-		<li><a href="threadDetails?threadID=${thread.threadID}&start=${next}">下一页</a></li>
-		<li><a href="threadDetails?threadID=${thread.threadID}&start=${last}">末 页</a></li>
+		<li><a href="threadDetails?threadID=${thread.threadID}&ifclick=0&start=0">首 页</a></li>
+		<li><a href="threadDetails?threadID=${thread.threadID}&ifclick=0&start=${pre}">上一页</a></li>
+		<li><a href="threadDetails?threadID=${thread.threadID}&ifclick=0&start=${next}">下一页</a></li>
+		<li><a href="threadDetails?threadID=${thread.threadID}&ifclick=0&start=${last}">末 页</a></li>
     <li><a href="#">&raquo;</a></li>
 </ul>
     </div>

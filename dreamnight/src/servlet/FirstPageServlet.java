@@ -116,7 +116,7 @@ public class FirstPageServlet extends HttpServlet {
 
 		List<Thread> threadsZD = new ToThread().list();
 		
-		List<Thread> threads = new ToThread().list(start, count);
+		List<Thread> threads = new ToThread().list3(start, count);
 
 		request.setAttribute("threads", threads);
 		

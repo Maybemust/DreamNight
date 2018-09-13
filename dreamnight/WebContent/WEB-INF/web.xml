@@ -242,5 +242,17 @@
 <url-pattern>/editTopic</url-pattern>
 
 </servlet-mapping>
+
+
+
+<servlet>
+	<servlet-name>AddThread</servlet-name>
+	<servlet-class>servlet.AddThread</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>AddThread</servlet-name>
+	<url-pattern>/addThread</url-pattern>
+</servlet-mapping>
  
 </web-app>

@@ -49,6 +49,18 @@ public class Thread {
 		this.topLabel = topLabel;
 		this.text = text;
 	}
+	public Thread(String threadName, String fromAccount, int numCommit, int numReading, Timestamp postTime,
+			Timestamp lastTime, int topLabel, String text) {
+		super();
+		this.threadName = threadName;
+		this.fromAccount = fromAccount;
+		this.numCommit = numCommit;
+		this.numReading = numReading;
+		this.postTime = postTime;
+		this.lastTime = lastTime;
+		this.topLabel = topLabel;
+		this.text = text;
+	}
 	/**
 	 * @return the threadName
 	 */

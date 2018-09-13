@@ -164,24 +164,33 @@ $("table").width(width) ; //设置table宽度
 	<div class="col-md-3 " >
 		<div class="panel panel-default">
   <div class="panel-heading">
-	  <img src="./images/person.JPG" style="padding-left: 35px;padding-top:5px" height="250px">
+	  <a href="displayThread"><img src="./images/person4.jpg" style="padding-left: 15px;padding-top:5px" height="200px"></a>
 	  <br>
-    <h3 class="panel-title" align="center">User_Name</h3>
+    <h3 class="panel-title" align="center">用户名:${USER.getAccount()}</h3>
   </div>
   <div class="panel-body">
-        <a href="#" style="font-weight:bold; color:#BCBCBC; float:right;padding-right: 10px">发帖数目</a>
+        <a href="#" style="font-weight:bold; color:#BCBCBC; float:left;padding-left: 10px">个性签名：${USER.getPersonality()}</a>
 		<a href="#" style="color:#C8C8C8;padding-right: 10px" ></a>
   </div>
  
 </div>
 </div>
-		 
+		 <div class="col-md-3 " >
+		 <div class="panel panel-default">
+		 <h3 class="panel-title" align="center"><button onclick="addThread()" style="float:center;width:260px;">发表</button></h3>
+		 <script>
+		 function addThread(){
+			 var urla = "addThread";
+			 window.open(urla);
+		 }
+		 </script>
+		 </div>
+		 </div>
 		  </div>
 		  
 	</div>
 
-	</div>
-  </div>
+
 	<br>
 	<br>
 	<br>

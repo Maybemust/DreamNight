@@ -171,6 +171,44 @@ public class ToThread {
 		}
 		return thread;
 	}
+	public Thread getText(String str) {
+		Thread thread = null;
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "select * from Thread where text = "+"'"+str+"';";
+
+			ResultSet rs = s.executeQuery(sql);
+
+			if (rs.next()) {
+				thread = new Thread();
+				String fromaccount=rs.getString("fromaccount");
+				String text=rs.getString("text");
+				int threadID =rs.getInt("threadID");
+				Timestamp posttime=rs.getTimestamp("posttime");
+				
+				thread.setThreadName(rs.getString("threadname"));
+				thread.setNumCommit(rs.getInt("numcommit"));
+				thread.setNumReading(rs.getInt("numreading"));
+				thread.setLastTime(rs.getTimestamp("lastcommittime"));
+				thread.setTopLabel(rs.getInt("toplabel"));
+				thread.setFromAccount(fromaccount);
+				thread.setPostTime(posttime);
+				thread.setThreadID(threadID);
+				thread.setText(text);
+				
+			}
+
+			DBhelper.closeConnection(c, s, rs);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return thread;
+	}
 	
 	public List<Thread> getThreadByFromAccount(String account) {
 		Thread thread = null;
@@ -258,7 +296,46 @@ public class ToThread {
 		}
 		return threads;
 	}
+	public List<Thread> list3(int start, int count) {
+		List<Thread> Threads = new ArrayList<Thread>();
 
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			String sql = "select * from Thread where toplabel = 0 order by lastcommittime desc limit ?,? ";
+
+			PreparedStatement ps = c.prepareStatement(sql);
+			ps.setInt(1, start);
+			ps.setInt(2, count);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Thread thread = new Thread();
+				String fromaccount=rs.getString("fromaccount");
+				String text=rs.getString("text");
+				int threadID =rs.getInt("threadID");
+				Timestamp posttime=rs.getTimestamp("posttime");
+				
+				thread.setThreadName(rs.getString("threadname"));
+				thread.setNumCommit(rs.getInt("numcommit"));
+				thread.setNumReading(rs.getInt("numreading"));
+				thread.setLastTime(rs.getTimestamp("lastcommittime"));
+				thread.setTopLabel(rs.getInt("toplabel"));
+				thread.setFromAccount(fromaccount);
+				thread.setPostTime(posttime);
+				thread.setThreadID(threadID);
+				thread.setText(text);
+				
+				Threads.add(thread);
+			}
+			DBhelper.closeConnection(c, ps, rs);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return Threads;
+	}
 	public List<Thread> list(int start, int count) {
 		List<Thread> Threads = new ArrayList<Thread>();
 

@@ -38,9 +38,13 @@ public class ThreadDetailServlet extends HttpServlet {
 		int ifclick = 0;
 		int start = 0;
 		try{	
-			System.out.println("_______________________________________");
+			System.out.println("_______________________________________\n");
 			threadID=Integer.parseInt(request.getParameter("threadID"));
+			System.out.println("__________________________________6n");
+
 			ifclick=Integer.parseInt(request.getParameter("ifclick"));
+			System.out.println("__________________________________7n");
+
 			start = Integer.parseInt(request.getParameter("start"));
 			System.out.println("__________________________________");
 			System.out.println(start);
