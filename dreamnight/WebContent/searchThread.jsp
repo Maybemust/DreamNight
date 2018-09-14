@@ -33,7 +33,7 @@
     <![endif]-->
 </head>
 <body onload="resize();" onresize="resize();">
-<script src="js/JQuery.min.js"></script>
+<script src="js/JQuery.min.js"></script> //别忘了引入JQeury的js文件
 <script>
 function resize() {
 var width = $(document).width() ; //获取浏览器宽度
@@ -77,7 +77,7 @@ $("table").width(width) ; //设置table宽度
 	function getValueAndSkip(){
 		        var input=document.getElementById("searchTextValue").value;//通过id获取文本框对象
 				var urlb="searchThread?threadName="+input.toString();
-				window.open(urlb,"_blank");
+				window.open(urlb);
 
 		     }
 		</script>
@@ -87,12 +87,16 @@ $("table").width(width) ; //设置table宽度
 	<p></p>
   <hr> 
 </div>
+
+
 <div class="container">
+
+
+
 	 <button type="button" class="btn btn-info btn-sm" onclick="getnoApplicationData()">关键词:${searchName}</button>
-  <div class="row">
-		  
-    <div class="text-center col-md-12" >	
-	<table style="width: 500px; margin: 44px auto"
+  <div class="row">S
+    <div class="text-center col-md-12 col-xs-12 " >	
+	<table style=" margin: 44px auto"
 	class="table table-striped table-bordered table-hover  table-condensed"
 	align='center' border='1' cellspacing='0' >
 	
@@ -115,7 +119,7 @@ $("table").width(width) ; //设置table宽度
 		  <hr class="hr1">
 		  <a style = "float:center;padding-left:5px;font-size: 20px;color:#3A3A3A">${thread.text}</a>
 		  <ul class="nav navbar-nav navbar-right">
-			  <li><a href="#" style="font-weight:bold;color:red">置顶</a></li>
+			  <!--  li><a href="#" style="font-weight:bold;color:red">置顶</a></li>-->
         		<li><a href="#" style="font-weight:bold;">点击数目：${thread.numReading}</a></li>
 				<li><a href="#">评论数目：${thread.numCommit}</a></li>
       		</ul>
@@ -127,15 +131,11 @@ $("table").width(width) ; //设置table宽度
 	</c:forEach>
 	
 </table>
-		<!--  c:forEach items="${students}" var="student" varStatus="st"-->
 		
     </div>
 </div>
 		  
 	</div>
-
-	</div>
-  </div>
 
 	<br>
 	<br>
