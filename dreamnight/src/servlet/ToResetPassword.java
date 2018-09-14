@@ -32,7 +32,7 @@ public class ToResetPassword extends HttpServlet {
 		if(password.equals(password2)){
 			user.setPassword(password);
 			toUser.update(user);
-			request.getRequestDispatcher("firstPage").forward(request, response);
+			request.getRequestDispatcher("login.jsp").forward(request, response);
 			
 		}
 		else{

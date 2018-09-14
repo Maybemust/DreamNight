@@ -105,7 +105,7 @@ $("table").width(width) ; //设置table宽度
 	  <div class="col">
 	  
 	  <div>
-	  <c:if test="${USER!=NULL}">
+	  <c:if test="${USER!=NULL && USER.getAuthority() != 1}">
 	<div class="col-md-3 hidden-xs "  style="float:right">
 	<div class="col-md-12 "  style="float:right">
 		<div class="panel panel-default">

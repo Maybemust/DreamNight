@@ -199,7 +199,7 @@ body {
           <td><div class="well"><strong> <img src = "./images/person2.JPG" alt="user_pic" style= "float: left; height:40px; width:60px;padding-left: 20px">
               <p style= "float:left;padding-left: 20px;padding-top:10px">:</p>
               <!--a href="threadDetails?threadID=${thread.threadID}" style = "float:left;padding-left: 5px;padding-top:1px;font-size:17px"--> 
-              <a href="threadDetails" style = "float:left;padding-left: 5px;padding-top:1px;font-size:17px"> ${Thread.threadName}</a></strong> <br>
+              <a href="threadDetails?threadID=${Thread.getThreadID()}&start=0&ifclick=1" style = "float:left;padding-left: 5px;padding-top:1px;font-size:17px"> ${Thread.threadName}</a></strong> <br>
               <br>
               <div>
                 <form action = "passThreadID" method="post" id="form1">

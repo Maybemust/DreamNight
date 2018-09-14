@@ -107,7 +107,7 @@ $("table").width(width) ; //设置table宽度
 		<div class="well" ><strong> 
 		<img src = "./images/person2.JPG" alt="user_pic" style= "float: left; height:40px; width:60px;padding-left: 20px">
 		  <p style= "float:left;padding-left: 20px;padding-top:10px">:</p>
-		  <a href="#" onclick="" style = "float:left;padding-left: 5px;padding-top:1px;font-size:17px">
+		  <a href="threadDetails?threadID=${thread.getThreadID()}&start=0&ifclick=1" onclick="" style = "float:left;padding-left: 5px;padding-top:1px;font-size:17px">
 		  ${thread.threadName}</a></strong>
 		  <br>
 		  <br>

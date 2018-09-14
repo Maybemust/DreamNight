@@ -30,7 +30,7 @@ public class ToConfirmPassword extends HttpServlet {
 		    request.setAttribute("account", account);
 			request.getRequestDispatcher("forgetpassword.jsp").forward(request, response);
 	}
-		else request.getRequestDispatcher("./register.jsp").forward(request, response);
+		else request.getRequestDispatcher("./login.jsp").forward(request, response);
 	    request.setAttribute("account", account);
 	}
 }

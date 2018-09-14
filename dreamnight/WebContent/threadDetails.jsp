@@ -116,9 +116,9 @@ $("table").width(width) ; //设置table宽度
 		  <br>
 		  <strong> 
 		   <div class="text-center col-md-1" >
-		  <a style= "float:center;">${thread.fromAccount}</a>
+		  <a style= "float:left;">${thread.fromAccount}</a>
 		 </div></strong>
-		 <p style = "float:center;font-size: 20px;color:#3A3A3A">${thread.text}</p>
+		 <p style = "float:left;font-size: 20px;color:#3A3A3A">${thread.text}</p>
 			<ul class="nav navbar-nav navbar-right">
 		  <br>
 		  <br>
@@ -160,7 +160,7 @@ $("table").width(width) ; //设置table宽度
 	</c:forEach>
 	
 </table>
-
+<c:if test="${USER.getAccount() != NULL}">
 		<div class="well" style= "width:700"><strong> 
 		
 	    <p style= "float:left;padding-left: 20px;padding-top:10px">发表回复:</p>
@@ -175,7 +175,7 @@ String datetime=new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance()
 <input type="hidden" name="threadID" value="${thread.threadID}"/>
 <input type="hidden" name="fromAccount" value="${USER.getAccount()}"/>
 
-<textarea name="textfield" cols="120" rows="6" id="textfield"></textarea><br><br>
+<textarea name="textfield" cols="120" rows="6" id="textfield" style="width:95%;"></textarea><br><br>
 		  <button class="alert-success"  type="submit" >发表</button>
 </form>
 		  <br>
@@ -186,7 +186,7 @@ String datetime=new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance()
 		  </strong></div>
     </div>
     
-
+</c:if>
     
   </div>
 	<br>

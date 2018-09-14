@@ -341,8 +341,8 @@ function saveqm()
 		<div class = "per_picture" id = "per_picture">
 			<img src = "images/touxiang.jpg" style="width:200px;height:200px;">
 			<div class = "per_information" id = "per_information">
-				<p>帐号：<input id = "user_name" readonly="readonly" style="border:0px;background:none;font-family:SimSun;font-size: 20px;" value=${user.account }></p><br />
-				<p>吧龄：<input id = "user_age" readonly="readonly" value="小于1年" style="border:0px;background:none;font-family:SimSun;font-size: 20px;"></p>
+				<p>帐号：<input id = "user_name" readonly="readonly" style="border:0px;background:none;font-family:SimSun;font-size: 20px;color:white;" value=${user.account }></p><br />
+				<p>吧龄：<input id = "user_age" readonly="readonly" value="小于1年" style="border:0px;background:none;font-family:SimSun;font-size: 20px;color:white;"></p>
 			</div>
 		</div>
     </div>	

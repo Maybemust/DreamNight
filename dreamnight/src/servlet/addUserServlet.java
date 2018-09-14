@@ -69,7 +69,7 @@ public class addUserServlet extends HttpServlet {
 			request.getRequestDispatcher("./register.jsp").forward(request, response);
 		}
 		else{
-		User s=new User(account0,nikename0,password0,security0,answer0);
+		User s=new User(account0,password0,nikename0,security0,answer0);
 		new ToUser().add(s);
 		request.getRequestDispatcher("./login.jsp").forward(request, response);
 		}
