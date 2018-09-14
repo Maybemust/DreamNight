@@ -43,7 +43,7 @@
 			<form action="logindata" id="form1" method="post">
 					用户名:
 				<br>
-					<input type="text" name="username" style="width: 99%;height: 20px">
+					<input type="text" name="account" style="width: 99%;height: 20px">
 				<br>
 				<br>
 				密 码:<br>

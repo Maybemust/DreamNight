@@ -42,7 +42,10 @@
 		<p>
 		<br>
 		<div style="text-align: right;text-align:center">
-		<a href="./reset password.jsp">重新输入？</a>
+		<form action="toWrong" method="post">
+		<input type="hidden" name="account" value="${account}">
+		<input type="submit" value="重新输入" style="align-content:center;background-color:#666666;color: aliceblue ;width: 99%; height: 30px;border-radius: 8px;font-size: 20px">
+		</form>
 		<br>
 		<br><a href="/firstPage">返回首页！</a>
 </body>

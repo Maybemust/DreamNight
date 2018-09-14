@@ -167,6 +167,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 document.getElementById("password").focus();
 				 return false;
 				 }
+			if(passwordagain==""){
+				alert("新密码不能为空!");
+				 document.getElementById("passwordagain").focus();
+				 return false;
+				 }
 			if(password != passwordagain){
 				alert("两次输入密码不相同!");
 				 document.getElementById("passwordagain").focus();
@@ -183,8 +188,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 return false;
 				 }
 			
+			if(password != passwordagain){
+				alert("两次输入密码不相同!");
+				 document.getElementById("passwordagain").focus();
+				 return false;
+				 }
+			else{
+				document.getElementById("user").submit();
+				document.getElementById("alink").href =urla;
+			}
 			
-			document.getElementById("alink").href =urla;
 		}
 	
 	    
@@ -193,28 +206,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 
 <div class="mydivcolor">
-<form action = "addUserServlet" method = "post">
+<form id="user" action = "addUserServlet" method = "post">
 	  <h2 class="myh">注册</h2>
 	  <p class="myp1">创建一个账号</p>
 	  <br>
 	 <p class="myp2">账号：</p>
 	 <p>${user}</p>
-	    <input class="myinputtext" type="text" name="account" required>
+	    <input class="myinputtext" id="account" type="text" name="account" required>
 	<br>
 	<p class="myp2">昵称：</p>
-	<input class="myinputtext" type="text" name="nikename" required>
+	<input class="myinputtext" id="nikename" type="text" name="nikename" required>
 	<br>
 	<p class="myp2">密码：</p>
-	<input class="myinputtext" type="password" maxlength="14" name="password" required>
+	<input class="myinputtext" id="password" type="password" maxlength="14" name="password" required>
 	<br>
 	<p class="myp2">请再次输入密码:</p>
-	<input class="myinputtext" type="password" maxlength="14" name="passwordagain" required>
+	<input class="myinputtext" id="passwordagain" type="password" maxlength="14" name="passwordagain" required>
 	<br>
 	<p class="myp2">请设置一个密保问题:</p>
-	<input class="myinputtext" type="text" name="security" required>
+	<input class="myinputtext" id="security" type="text" name="security" required>
 	<br>
 	<p class="myp2">密保答案:</p>
-	<input class="myinputtext" type="text" name="answer" required>
+	<input class="myinputtext" id="answer" type="text" name="answer" required>
 	   
 	
 	<br>

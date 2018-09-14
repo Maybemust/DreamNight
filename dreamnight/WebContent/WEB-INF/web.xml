@@ -1,253 +1,209 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" 
-	id="WebApp_ID" version="3.1">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>dream night</display-name>
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-            <servlet-name>DisplayMyThreads</servlet-name>
-            <servlet-class>servlet.DisplayMyThreads</servlet-class>
-   </servlet>
-   <servlet>
-            <servlet-name>DisplayMyCommits</servlet-name>
-            <servlet-class>servlet.DisplayMyCommits</servlet-class>
-   </servlet>
-   <servlet>
-            <servlet-name>DeleteCommit</servlet-name>
-            <servlet-class>servlet.DeleteCommit</servlet-class>
-   </servlet>
-   <servlet-mapping>
-        <servlet-name>DeleteCommit</servlet-name>
-        <url-pattern>/deleteCommit</url-pattern>
-   </servlet-mapping>
-   <servlet-mapping>
-        <servlet-name>DisplayMyThreads</servlet-name>
-        <url-pattern>/displayThread</url-pattern>
-   </servlet-mapping>
-   <servlet-mapping>
-        <servlet-name>DisplayMyCommits</servlet-name>
-        <url-pattern>/displayCommit</url-pattern>
-   </servlet-mapping>
-
- <servlet>
-            <servlet-name>information_save_nikename</servlet-name>
-            <servlet-class>servlet.information_save_nikename</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>information_save_nikename</servlet-name>
-        <url-pattern>/changeNikename</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-            <servlet-name>information_save_qm</servlet-name>
-            <servlet-class>servlet.information_save_qm</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>information_save_qm</servlet-name>
-        <url-pattern>/changePersonality</url-pattern>
-    </servlet-mapping>
-    
-     <servlet>
-            <servlet-name>PersonalPage_Init</servlet-name>
-            <servlet-class>servlet.PersonalPage_Init</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>PersonalPage_Init</servlet-name>
-        <url-pattern>/getUser</url-pattern>
-    </servlet-mapping>
-      
-    <servlet>
-            <servlet-name>PdChange</servlet-name>
-            <servlet-class>servlet.PdChange</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>PdChange</servlet-name>
-        <url-pattern>/PdChange</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-            <servlet-name>securityChange</servlet-name>
-            <servlet-class>servlet.securityChange</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>securityChange</servlet-name>
-        <url-pattern>/securityChange</url-pattern>
-    </servlet-mapping>
-    
-
-    <servlet>
-            <servlet-name>ListServlet</servlet-name>
-            <servlet-class>servlet.ListServlet</servlet-class>
-   </servlet>
-   <servlet-mapping>
-        <servlet-name>ListServlet</servlet-name>
-        <url-pattern>/admin</url-pattern>
-   </servlet-mapping>
-   <servlet>
-   	<servlet-name>SetTop</servlet-name>
-   	<servlet-class>servlet.SetTop</servlet-class>
-   </servlet>
-   <servlet-mapping>
-   	<servlet-name>SetTop</servlet-name>
-   	<url-pattern>/setTop</url-pattern>
-   </servlet-mapping>
-   <servlet>
-   	<servlet-name>DeleteThread</servlet-name>
-   	<servlet-class>servlet.DeleteThread</servlet-class>
-   </servlet>
-   <servlet-mapping>
-   	<servlet-name>DeleteThread</servlet-name>
-   	<url-pattern>/deleteThread</url-pattern>
-   </servlet-mapping>
+    <servlet-name>DisplayMyThreads</servlet-name>
+    <servlet-class>servlet.DisplayMyThreads</servlet-class>
+  </servlet>
   <servlet>
-   	<servlet-name>SetAuthority</servlet-name>
-   	<servlet-class>servlet.SetAuthority</servlet-class>
-   </servlet>
-   <servlet-mapping>
-   	<servlet-name>SetAuthority</servlet-name>
-   	<url-pattern>/setAuthority</url-pattern>
-   </servlet-mapping>
-   
+    <servlet-name>DisplayMyCommits</servlet-name>
+    <servlet-class>servlet.DisplayMyCommits</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeleteCommit</servlet-name>
+    <servlet-class>servlet.DeleteCommit</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteCommit</servlet-name>
+    <url-pattern>/deleteCommit</url-pattern>
+  </servlet-mapping>
+  
    <servlet>
-   	<servlet-name>addUserServlet</servlet-name>
-   	<servlet-class>servlet.addUserServlet</servlet-class>
-   </servlet>
-   <servlet-mapping>
-   	<servlet-name>addUserServlet</servlet-name>
-   	<url-pattern>/addUserServlet</url-pattern>
-   </servlet-mapping>
-
-
-<servlet>
+    <servlet-name>ToWrong</servlet-name>
+    <servlet-class>servlet.ToWrong</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ToWrong</servlet-name>
+    <url-pattern>/toWrong</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>DisplayMyThreads</servlet-name>
+    <url-pattern>/displayThread</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DisplayMyCommits</servlet-name>
+    <url-pattern>/displayCommit</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>information_save_nikename</servlet-name>
+    <servlet-class>servlet.information_save_nikename</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>information_save_nikename</servlet-name>
+    <url-pattern>/changeNikename</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>information_save_qm</servlet-name>
+    <servlet-class>servlet.information_save_qm</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>information_save_qm</servlet-name>
+    <url-pattern>/changePersonality</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>PersonalPage_Init</servlet-name>
+    <servlet-class>servlet.PersonalPage_Init</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PersonalPage_Init</servlet-name>
+    <url-pattern>/getUser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>PdChange</servlet-name>
+    <servlet-class>servlet.PdChange</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PdChange</servlet-name>
+    <url-pattern>/PdChange</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>securityChange</servlet-name>
+    <servlet-class>servlet.securityChange</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>securityChange</servlet-name>
+    <url-pattern>/securityChange</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ListServlet</servlet-name>
+    <servlet-class>servlet.ListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListServlet</servlet-name>
+    <url-pattern>/admin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SetTop</servlet-name>
+    <servlet-class>servlet.SetTop</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SetTop</servlet-name>
+    <url-pattern>/setTop</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DeleteThread</servlet-name>
+    <servlet-class>servlet.DeleteThread</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteThread</servlet-name>
+    <url-pattern>/deleteThread</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SetAuthority</servlet-name>
+    <servlet-class>servlet.SetAuthority</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SetAuthority</servlet-name>
+    <url-pattern>/setAuthority</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>addUserServlet</servlet-name>
+    <servlet-class>servlet.addUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>addUserServlet</servlet-name>
+    <url-pattern>/addUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>ToConfirmPassword</servlet-name>
     <servlet-class>servlet.ToConfirmPassword</servlet-class>
   </servlet>
-
-<servlet-mapping>
+  <servlet-mapping>
     <servlet-name>ToConfirmPassword</servlet-name>
     <url-pattern>/ToConfirmPassword</url-pattern>
   </servlet-mapping>
-
-<servlet>
+  <servlet>
     <servlet-name>toForgetPassword</servlet-name>
     <servlet-class>servlet.toForgetPassword</servlet-class>
   </servlet>
-
-<servlet-mapping>
+  <servlet-mapping>
     <servlet-name>toForgetPassword</servlet-name>
     <url-pattern>/toForgetPassword</url-pattern>
   </servlet-mapping>
-
-<servlet>
+  <servlet>
     <servlet-name>ToResetPassword</servlet-name>
     <servlet-class>servlet.ToResetPassword</servlet-class>
   </servlet>
-
-  
   <servlet-mapping>
     <servlet-name>ToResetPassword</servlet-name>
     <url-pattern>/ToResetPassword</url-pattern>
   </servlet-mapping>
-
   <servlet>
     <servlet-name>logindata</servlet-name>
     <servlet-class>servlet.logindata</servlet-class>
   </servlet>
-
-  
   <servlet-mapping>
     <servlet-name>logindata</servlet-name>
     <url-pattern>/logindata</url-pattern>
   </servlet-mapping>
-
-
-<servlet>
-            <servlet-name>SearchThreadServlet</servlet-name>
-            <servlet-class>servlet.SearchThreadServlet</servlet-class>
-   </servlet>
-   <servlet-mapping>
-        <servlet-name>SearchThreadServlet</servlet-name>
-        <url-pattern>/searchThread</url-pattern>
-   </servlet-mapping>
-
-   <servlet>
-            <servlet-name>ThreadDetailServlet</servlet-name>
-            <servlet-class>servlet.ThreadDetailServlet</servlet-class>
-   </servlet>
-   <servlet-mapping>
-        <servlet-name>ThreadDetailServlet</servlet-name>
-        <url-pattern>/threadDetails</url-pattern>
-   </servlet-mapping>
-
-
- <servlet>
-            <servlet-name>FirstPageServlet</servlet-name>
-            <servlet-class>servlet.FirstPageServlet</servlet-class>
-   </servlet>
-   <servlet-mapping>
-        <servlet-name>FirstPageServlet</servlet-name>
-        <url-pattern>/firstPage</url-pattern>
-   </servlet-mapping>
-
-
- <servlet>
-            <servlet-name>AddCommitServlet</servlet-name>
-            <servlet-class>servlet.AddCommitServlet</servlet-class>
-   </servlet>
-   <servlet-mapping>
-        <servlet-name>AddCommitServlet</servlet-name>
-        <url-pattern>/addCommit</url-pattern>
-   </servlet-mapping>
-   
-   
-<servlet>
-
-<servlet-name>SaveEditTopicServlet</servlet-name>
-
-<servlet-class>servlet.SaveEditTopicServlet</servlet-class>
-
-</servlet>
-
-
-<servlet-mapping>
-
-<servlet-name>SaveEditTopicServlet</servlet-name>
-
-<url-pattern>/saveEditTopic</url-pattern>
-
-</servlet-mapping>
-
-
-<servlet>
-
-<servlet-name>EditTopicServlet</servlet-name>
-
-<servlet-class>servlet.EditTopicServlet</servlet-class>
-
-</servlet>
-
-
-<servlet-mapping>
-
-<servlet-name>EditTopicServlet</servlet-name>
-
-<url-pattern>/editTopic</url-pattern>
-
-</servlet-mapping>
-
-
-
-<servlet>
-	<servlet-name>AddThread</servlet-name>
-	<servlet-class>servlet.AddThread</servlet-class>
-</servlet>
-
-<servlet-mapping>
-	<servlet-name>AddThread</servlet-name>
-	<url-pattern>/addThread</url-pattern>
-</servlet-mapping>
- 
+  <servlet>
+    <servlet-name>SearchThreadServlet</servlet-name>
+    <servlet-class>servlet.SearchThreadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchThreadServlet</servlet-name>
+    <url-pattern>/searchThread</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ThreadDetailServlet</servlet-name>
+    <servlet-class>servlet.ThreadDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ThreadDetailServlet</servlet-name>
+    <url-pattern>/threadDetails</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>FirstPageServlet</servlet-name>
+    <servlet-class>servlet.FirstPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FirstPageServlet</servlet-name>
+    <url-pattern>/firstPage</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AddCommitServlet</servlet-name>
+    <servlet-class>servlet.AddCommitServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddCommitServlet</servlet-name>
+    <url-pattern>/addCommit</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SaveEditTopicServlet</servlet-name>
+    <servlet-class>servlet.SaveEditTopicServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SaveEditTopicServlet</servlet-name>
+    <url-pattern>/saveEditTopic</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>EditTopicServlet</servlet-name>
+    <servlet-class>servlet.EditTopicServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditTopicServlet</servlet-name>
+    <url-pattern>/editTopic</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AddThread</servlet-name>
+    <servlet-class>servlet.AddThread</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddThread</servlet-name>
+    <url-pattern>/addThread</url-pattern>
+  </servlet-mapping>
 </web-app>

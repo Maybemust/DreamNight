@@ -106,17 +106,20 @@ $("table").width(width) ; //设置table宽度
 	  
 	  <div>
 	  <c:if test="${USER!=NULL && USER.getAuthority() != 1}">
-	<div class="col-md-3 hidden-xs "  style="float:right">
+	<div class="col-md-3"  style="float:right">
 	<div class="col-md-12 "  style="float:right">
 		<div class="panel panel-default">
 
-  <div class="panel-heading">
+  <div class="panel-heading hidden-xs">
 	  <a href="displayThread"><img src="./images/person4.jpg" style="float:center;width:90%;padding-left:25px;"></a>
 	  <br>
-    <h3 class="panel-title" align="center">用户名:${USER.getAccount()}</h3>
-  </div>
+	  
+	    </div>
+	  <div>
+	      <h3 class="panel-title" align="center" href="displayThread" style = "float:center;">用户名:${USER.getAccount()}</h3>
+	  </div>
   <div class="panel-body">
-        <a href="#" style="font-weight:bold; color:#BCBCBC; float:left;padding-left: 10px">个性签名：${USER.getPersonality()}</a>
+        <a href="displayThread" style="font-weight:bold; color:#BCBCBC; float:left;padding-left: 10px">个性签名：${USER.getPersonality()}</a>
 		<a href="#" style="color:#C8C8C8;padding-right: 10px" ></a>
   </div>
   </div>

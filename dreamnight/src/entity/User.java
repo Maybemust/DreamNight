@@ -33,7 +33,7 @@ public class User {
 		this.nikeName = nikeName;
 		this.security = security;
 		this.answer = answer;
-		this.authority = authority;
+		this.authority = 0;
 		this.personality = personality;
 		this.head=head;
 	}
@@ -45,6 +45,7 @@ public class User {
 		this.nikeName = nikeName;
 		this.security = security;
 		this.answer = answer;
+		this.authority = 0;
 	}
 
 	/**

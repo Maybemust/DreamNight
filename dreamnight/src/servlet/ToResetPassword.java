@@ -24,7 +24,7 @@ public class ToResetPassword extends HttpServlet {
 			System.out.println(account+"11111");
 		} catch (NumberFormatException e) {
 		}
-		//User user=new User("username","","","","");
+		//User user=new User("account","","","","");
 		ToUser toUser=new ToUser();
 		User user=toUser.get(account);
 		request.setAttribute("account", account);
@@ -32,7 +32,7 @@ public class ToResetPassword extends HttpServlet {
 		if(password.equals(password2)){
 			user.setPassword(password);
 			toUser.update(user);
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			request.getRequestDispatcher("firstPage").forward(request, response);
 			
 		}
 		else{

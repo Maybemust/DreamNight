@@ -49,12 +49,14 @@ public class addUserServlet extends HttpServlet {
 		String account0="";
 		String nikename0="";
 		String password0="";
+		String password1="";
 		String security0="";
 		String answer0="";
 		try{
 			account0=request.getParameter("account");
 			nikename0=request.getParameter("nikename");
 			password0=request.getParameter("password");
+			password1=request.getParameter("passwordagain");
 			security0=request.getParameter("security");
 			answer0=request.getParameter("answer");
 			
@@ -70,8 +72,13 @@ public class addUserServlet extends HttpServlet {
 		}
 		else{
 		User s=new User(account0,password0,nikename0,security0,answer0);
-		new ToUser().add(s);
-		request.getRequestDispatcher("./login.jsp").forward(request, response);
+			if(password0.equals(password1)){
+				new ToUser().add(s);
+				request.getRequestDispatcher("./login.jsp").forward(request, response);
+			}
+			else{
+				request.getRequestDispatcher("./register.jsp").forward(request, response);
+			}
 		}
 		
 		

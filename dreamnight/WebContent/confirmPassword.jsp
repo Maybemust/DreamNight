@@ -40,7 +40,7 @@
 			<form action="ToConfirmPassword" id="form2" method="post">
 					请输入您的账号:
 				<br>
-					<input type="text" name="username" style="width: 99%;height: 20px">
+					<input type="text" name="account" style="width: 99%;height: 20px">
 				<br>
 				<br>
 				<br>

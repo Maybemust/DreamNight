@@ -16,7 +16,7 @@ public class ToConfirmPassword extends HttpServlet {
 		
 		String account="";
 		try {
-			account = request.getParameter("username");
+			account = request.getParameter("account");
 			System.out.println("hello"+account);
 		} catch (NumberFormatException e) {
 			
@@ -30,7 +30,8 @@ public class ToConfirmPassword extends HttpServlet {
 		    request.setAttribute("account", account);
 			request.getRequestDispatcher("forgetpassword.jsp").forward(request, response);
 	}
-		else request.getRequestDispatcher("./login.jsp").forward(request, response);
-	    request.setAttribute("account", account);
+		else  {request.setAttribute("account", account);
+			request.getRequestDispatcher("./register.jsp").forward(request, response);
+		}
 	}
 }

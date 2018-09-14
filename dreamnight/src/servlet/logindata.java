@@ -16,12 +16,12 @@ public class logindata extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
 		
-		String username="";
+		String account="";
 		String password="";
 		try {
-			username = request.getParameter("username");
+			account = request.getParameter("account");
 			password=request.getParameter("password");
-			System.out.println(username);
+			System.out.println(account);
 			System.out.println(password);
 		} catch (NumberFormatException e) {
 			
@@ -29,14 +29,14 @@ public class logindata extends HttpServlet {
 		
 		ToUser toUser=new ToUser();
 		//System.out.println("1111111111111111111111111111111");
-		User user=toUser.get(username);
+		User user=toUser.get(account);
 		if(user!=null){
 		if (password.equals(user.getPassword())){
 			request.getSession().setAttribute("USER", user);
 			//System.out.println("22222222222222222222222222222");
 			request.getRequestDispatcher("firstPage").forward(request, response);
 			//System.out.println("333333333333333333333333333");
-		    request.setAttribute("account", username);
+		    request.setAttribute("account",account);
 		}
 		else {
 		    request.setAttribute("security", user.getSecurity());

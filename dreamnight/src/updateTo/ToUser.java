@@ -58,7 +58,7 @@ public class ToUser {
 			ps.setString(3, user.getNikeName());
 			ps.setString(4, user.getSecurity());
 			ps.setString(5, user.getAnswer());
-			ps.setInt(6, 1);
+			ps.setInt(6, 0);
 			//ps.setBlob(7,user.getHead());
 			//ps.setString(8, user.getPersonality());
 			
