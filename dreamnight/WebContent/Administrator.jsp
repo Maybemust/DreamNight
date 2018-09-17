@@ -20,7 +20,7 @@
 		<hr style="position:relative;top:20px"/>
 	</div>
 	<div class="div_allinline">
-	
+      
 		<div class = "subdiv_allinline">
 			<div class="theme">
 				<h2 style="font-weight: bold;font-size: 250%;">主题管理</h2>
@@ -59,6 +59,25 @@
 						<li><a href="?start=${pre}&op=点击主题管理列表上一页">上一页</a></li>
 						<li><a href="?start=${next}&op=点击主题管理列表下一页">下一页</a></li>
 						<li><a href="?start=${last}&op=点击主题管理列表末页">末 页</a></li>
+						<li>
+						
+							 <div class="navbar-form navbar-left" role="search">
+						        <div class="form-group">
+						          <input type="text" style="background-color:white; width:300px;" id ="searchTextValue"  class="form-control">
+						        </div>
+						        <button type="submit" class="btn btn-default" onclick="getValueAndSkip()" style = "color:#23238e">搜索主题</button>
+						      	<a href = "admin"><button type="submit" class="btn btn-default" style = "color:#23238e">取消本次搜索</button></a>
+						      </div>
+							<script>
+							function getValueAndSkip(){
+								        var input=document.getElementById("searchTextValue").value;//通过id获取文本框对象
+								        var urlb="admin?searchThreadName="+encodeURI(encodeURI(input.toString()));
+										window.location.href=urlb;
+										window.open(urlb,"_self");
+								     }
+							</script>
+						 
+						 </li>
 					</ul>
 				</nav>
 			</div>
@@ -125,6 +144,25 @@
 						<li><a href="?ustart=${upre}&op=点击用户管理列表上一页">上一页</a></li>
 						<li><a href="?ustart=${unext}&op=点击用户管理列表下一页">下一页</a></li>
 						<li><a href="?ustart=${ulast}&op=点击用户管理列表末页">末 页</a></li>
+						<li>
+						
+							 <div class="navbar-form navbar-left" role="searchUser">
+						        <div class="form-group">
+						          <input type="text" style="background-color:white; width:300px;" id ="searchUser"  class="form-control">
+						        </div>
+						        <button type="submit" class="btn btn-default" onclick="getValueAndSkipUser()" style = "color:#23238e">搜索用户</button>
+						      	<a href = "admin"><button type="submit" class="btn btn-default" style = "color:#23238e">取消本次搜索</button></a>
+						      </div>
+							<script>
+							function getValueAndSkipUser(){
+								        var inputUser=document.getElementById("searchUser").value;//通过id获取文本框对象
+								        var urlbUser="admin?searchAccount="+encodeURI(encodeURI(inputUser.toString()));
+										window.location.href=urlbUser;
+										window.open(urlbUser,"_self");
+								     }
+							</script>
+						 
+						 </li>
 					</ul>
 				</nav>
 			</div>

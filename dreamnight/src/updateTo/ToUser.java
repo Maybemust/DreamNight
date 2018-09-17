@@ -281,5 +281,50 @@ public class ToUser {
 			e.printStackTrace();
 		}
     }
+	
+	public List<User> searchUser(String account) {
+		List<User> users=new ArrayList<User>();
+		
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "select * from User where account like '%" + account + "%'";
+				
+			ResultSet rs = s.executeQuery(sql);
+			
+			while(rs.next()) {
+				User user = new User();
+				
+				account=rs.getString("account");
+				String password=rs.getString("password");
+				String nikename=rs.getString("nikename");
+				String security=rs.getString("security");
+				String answer=rs.getString("answer");
+				int authority=rs.getInt("authority");
+				Blob head=rs.getBlob("head");
+				String personality =rs.getString("personality");
+				
+				user.setAccount(account);
+				user.setPassword(password);
+				user.setAnswer(answer);
+				user.setAuthority(authority);
+				user.setHead(head);
+				user.setNikeName(nikename);
+				user.setSecurity(security);
+				user.setPersonality(personality);
+				
+				users.add(user);
+			}
+
+			DBhelper.closeConnection(c, s, rs);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return users;
+	}
 
 }

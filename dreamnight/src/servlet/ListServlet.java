@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entity.Thread;
 import entity.User;
 import updateTo.ToThread;
 import updateTo.ToUser;
@@ -73,8 +76,39 @@ public class ListServlet extends HttpServlet{
 		
 		User USER = (User)request.getSession().getAttribute("USER");
 		
-		List<entity.Thread> threads = tothread.list(start, count);
-		List<entity.User> users = touser.list(ustart, count);
+		String searchThread = request.getParameter("searchThreadName");
+		if(searchThread != null) searchThread = URLDecoder.decode(searchThread, "UTF-8");
+		List<entity.Thread> threadstmp = null, threads = null;
+		if(searchThread == null){
+			threads = tothread.list(start, count);
+		}else{
+			threadstmp = tothread.searchThread(searchThread);
+			int size = 0;
+			if(threadstmp.size() < count) size = threadstmp.size();
+			else size = count;
+			
+			threads = new ArrayList<Thread>();
+			for(int i = 0; i < size; i++){
+				threads.add(threadstmp.get(i));
+			}
+		}
+		
+		String searchAccount = request.getParameter("searchAccount");
+		if(searchAccount != null) searchAccount = URLDecoder.decode(searchAccount, "UTF-8");
+		List<entity.User> users = null, userstemp = null;
+		if(searchAccount == null){
+			users = touser.list(ustart, count);
+		}else{
+			userstemp = touser.searchUser(searchAccount);
+			int size = 0;
+			if(userstemp.size() < count) size = userstemp.size();
+			else size = count;
+			
+			users = new ArrayList<User>();
+			for(int i = 0; i < size; i++){
+				users.add(userstemp.get(i));
+			}
+		}
 		
 		for(int i = 0; i < users.size(); i++){
 			if(users.get(i).getAuthority() >= 3){
