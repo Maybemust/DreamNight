@@ -159,7 +159,8 @@ $("table").width(width) ; //设置table宽度
 		 </div>
 		  
 		  <hr class="hr1">
-		  <a style = "float:center;padding-left:5px;font-size: 20px;color:#3A3A3A">${thread.getText()}</a>
+		  <p style = "float:center;padding-left:5px;font-size: 20px;color:#3A3A3A">${thread.getText()}</p>
+		  
 		  <ul class="nav navbar-nav navbar-right">
 			  <li><a href="#" style="font-weight:bold;color:red">置顶</a></li>
         		<li><a href="#" style="font-weight:bold;">点击数目：${thread.getNumReading()}</a></li>
@@ -193,7 +194,7 @@ $("table").width(width) ; //设置table宽度
 		 </div>
 		  
 		  <hr class="hr1">
-		  <a style = "float:center;padding-left:5px;font-size: 20px;color:#3A3A3A">${thread.getText()}</a>
+		  <p style = "float:center;padding-left:5px;font-size: 20px;color:#3A3A3A">${thread.getText()}</p>
 		  <ul class="nav navbar-nav navbar-right">
         		<li><a href="#" style="font-weight:bold;">点击数目：${thread.getNumReading()}</a></li>
 				<li><a href="#">评论数目：${thread.getNumCommit()}</a></li>

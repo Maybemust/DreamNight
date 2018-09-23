@@ -95,43 +95,43 @@ $("table").width(width) ; //设置table宽度
 <div class="container">
 	  <div class="row">
     <div class="text-center col-md-12 col-xs-12 " >
-      <div class="well" style= "width:700"><strong> 
-      <script>
+    
+    
+          <script>
       var urlb = location.search;
 				var reg = new RegExp("(^|&)"+ "threadID" +"=([^&]*)(&|$)");
 			    var r = window.location.search.substr(1).match(reg);
 			    var str=unescape(r[2]);
 		</script>
-      
-		<img src = "./images/头像.jpg" alt="user_pic" style= "float: left; height:60px; width:80px;padding-left: 20px">
-	  
+		
+
+		
+		
+		
+		
+		
+				<div class="well" ><strong> 
+	<img src = "./images/头像.jpg" alt="user_pic" style= "float: left; height:60px; width:80px;padding-left: 20px">
 		  <p style= "float:left;padding-left: 20px;padding-top:10px">:</p>
 		  		 <p  style = "float:left;padding-left:5px;font-size: 20px;color:#3A3A3A">主题</p>
-		  <br>
-		  <p style = "float:left;padding-left: 5px;padding-top:1px;font-size:17px">
-		  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;${thread.threadName}</p>
-
-		  <br>
+			  <p style = "float:left;padding-left: 5px;padding-top:1px;font-size:17px">
+		  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;${thread.threadName}</p></strong>
+		  
 		  <br>
 		  <br>
-		  <strong> 
-		   <div class="text-center col-md-1" >
-		  <a style= "float:left;">${thread.fromAccount}</a>
-		 </div></strong>
-		 <p style = "float:left;font-size: 20px;color:#3A3A3A">${thread.text}</p>
-			<ul class="nav navbar-nav navbar-right">
+		  <hr >
+		  <p style = "float:center;padding-left:5px;font-size: 20px;color:#3A3A3A">${thread.getText()}</p>
+		  
+		  <ul class="nav navbar-nav navbar-right">
+        		<li><a href="#" style="font-weight:bold;">点击数目：${thread.getNumReading()}</a></li>
+				<li><a href="#">评论数目：${thread.getNumCommit()}</a></li>
+      		</ul>
 		  <br>
-		  <br>
-   		  <li><a href="#" style="font-weight:bold">点击数目:${thread.numReading}</a></li>
-				<li><a href="#">评论数目:${thread.numCommit}</a></li>
-   		</ul>
-		  <br>
-
-		  <br>
-		  <br>
-
-		  </strong></div>
-		
+		  </div>
+		  
+		  
+		  
+		  
 		<table style="margin: 44px auto"
 	class="table table-striped table-bordered table-hover  table-condensed"
 	align='center' border='1' cellspacing='0' >
