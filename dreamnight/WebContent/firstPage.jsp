@@ -56,12 +56,12 @@ $("table").width(width) ; //设置table宽度
       		  <img src="./images/logo.JPG" style="padding-top:2px;padding-left: 5px; height:50px">
         <span class="sr-only"></span>
       </ul>
-      <form class="navbar-form navbar-left" role="search">
+      <div class="navbar-form navbar-left" role="search">
         <div class="form-group">
           <input type="text" style="background-color:#273346;width:300px;" id ="searchTextValue"  class="form-control">
         </div>
-        <button type="submit" class="btn btn-default" onclick="getValueAndSkip()" style = "font-size:18px" >搜 索</button>
-      </form>
+        <button class="btn btn-default" onclick="getValueAndSkip()" style = "font-size:18px" >搜 索</button>
+      </div>
       
       
       <ul class="nav navbar-nav navbar-right">

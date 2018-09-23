@@ -24,14 +24,15 @@
 <body style="background-color:#36465D">
 	<div class="blocks">
 	<form action="saveEditTopic" method="post">
+	<div>
 		<input type = "text" name="threadName" value="${thread.threadName}" />
 		<input type = "hidden" name="threadID" value="${thread.threadID}" readonly="readonly" />
 		<input type = "hidden" name="fromPage" value="${fromPage}"/>
 		
 		<textarea name="text" style="width:550px;height:300px;position:relative;top:30px;left:25px">${thread.text}</textarea>
 		<input type="submit" value="save" style="position:relative;top:72px;left:-100px" />
-		<a href = "${fromPage}"><input type="button" value="back" style="position:relative;top:50px;left:380px" /></a>
-
+		<a href = "deleteSkip?from=${fromPage}&id=${thread.threadID}"><input type="button" value="back" style="position:relative;top:50px;left:380px" /></a>
+		</div>
 		</form>
 	</div>
 	

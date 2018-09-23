@@ -206,4 +206,12 @@
     <servlet-name>AddThread</servlet-name>
     <url-pattern>/addThread</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>DeleteSkipServlet</servlet-name>
+    <servlet-class>servlet.DeleteSkipServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteSkipServlet</servlet-name>
+    <url-pattern>/deleteSkip</url-pattern>
+  </servlet-mapping>
 </web-app>

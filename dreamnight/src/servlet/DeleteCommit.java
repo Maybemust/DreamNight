@@ -37,6 +37,7 @@ public class DeleteCommit extends HttpServlet {
 		} catch (NumberFormatException e) {
 		
 		}
+		String fromaccount=USER.getAccount();
 		new ToCommit().delete(id);
 		int next = start + count;
 		int pre = start - count;
@@ -56,7 +57,7 @@ public class DeleteCommit extends HttpServlet {
 		request.setAttribute("pre", pre);
 		request.setAttribute("last", last);
 
-		List<Commit> Commits = new ToCommit().list(start, count);
+		List<Commit> Commits = new ToCommit().list(start, count,fromaccount);
 		request.setAttribute("Commits", Commits);
 
 		request.getRequestDispatcher("PersonCenter2.jsp").forward(request, response);

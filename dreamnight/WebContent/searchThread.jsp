@@ -33,7 +33,7 @@
     <![endif]-->
 </head>
 <body onload="resize();" onresize="resize();">
-<script src="js/JQuery.min.js"></script> //别忘了引入JQeury的js文件
+<script src="js/JQuery.min.js"></script>
 <script>
 function resize() {
 var width = $(document).width() ; //获取浏览器宽度
@@ -55,12 +55,12 @@ $("table").width(width) ; //设置table宽度
 		  <img src="./images/logo.JPG" style="padding-top:2px;padding-left: 5px; height:50px">
         <span class="sr-only">(current)</span>
       </ul>
-      <form class="navbar-form navbar-left" role="search">
+      <div class="navbar-form navbar-left" role="search">
         <div class="form-group">
           <input type="text" style="background-color:#273346;width:300px;" id ="searchTextValue"  class="form-control">
         </div>
-        <button type="submit" class="btn btn-default" onclick="getValueAndSkip()" style = "font-size:18px" >搜 索</button>
-      </form>
+        <button class="btn btn-default" onclick="getValueAndSkip()" style = "font-size:18px" >搜 索</button>
+      </div>
       <ul class="nav navbar-nav navbar-right">
               <li><a href="firstPage?start=0" style="font-weight:bold; color:#FECD10">返回首页</a></li>
         <li><a href="#" style="font-weight:bold; color: #FECD00">登  陆</a></li>
@@ -94,7 +94,7 @@ $("table").width(width) ; //设置table宽度
 
 
 	 <button type="button" class="btn btn-info btn-sm" onclick="getnoApplicationData()">关键词:${searchName}</button>
-  <div class="row">S
+  <div class="row">
     <div class="text-center col-md-12 col-xs-12 " >	
 	<table style=" margin: 44px auto"
 	class="table table-striped table-bordered table-hover  table-condensed"
